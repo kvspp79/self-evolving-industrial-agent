@@ -1,0 +1,71 @@
+{
+  "step": "8.2",
+  "project": "NASA C-MAPSS",
+  "subset": "FD001",
+  "run_time_utc": "2026-10-25T09:54:22.937115+00:00",
+  "method": {
+    "reference_distribution": "processed training sensor rows",
+    "comparison_distribution": "processed test sensor rows",
+    "tests": [
+      "two-sample Kolmogorov-Smirnov test",
+      "Benjamini-Hochberg false-discovery-rate correction",
+      "Population Stability Index",
+      "absolute standardized mean difference"
+    ],
+    "psi_bins": 10,
+    "significance_level": 0.05,
+    "psi_warning_threshold": 0.1,
+    "psi_major_threshold": 0.2,
+    "smd_warning_threshold": 0.5,
+    "max_rows_per_partition": 10000,
+    "random_seed": 42
+  },
+  "data": {
+    "training_rows": 20631,
+    "test_rows": 13096,
+    "training_engines": 100,
+    "test_engines": 100,
+    "sensors_tested": 15
+  },
+  "shift_summary": {
+    "moderate_or_major_shifted_sensors": 14,
+    "major_shift_sensors": 11,
+    "shifted_sensor_fraction": 0.9333333333333333,
+    "shifted_sensor_names": [
+      "sensor_11",
+      "sensor_04",
+      "sensor_07",
+      "sensor_12",
+      "sensor_15",
+      "sensor_21",
+      "sensor_20",
+      "sensor_17",
+      "sensor_02",
+      "sensor_03",
+      "sensor_13",
+      "sensor_08",
+      "sensor_09",
+      "sensor_14"
+    ]
+  },
+  "controlled_adaptation": {
+    "reassessment_review_triggered": true,
+    "recommendation": "TRIGGER_POLICY_REASSESSMENT_REVIEW: sensor distribution shift exceeded the configured screening rule. Review feature stability, model calibration, and maintenance policy performance using appropriately labeled validation data before approving any change.",
+    "automatic_model_retraining": false,
+    "automatic_policy_deployment": false,
+    "test_rul_labels_used_for_selection": false
+  },
+  "limitations": [
+    "A training-to-test distribution difference is not proof of temporal concept drift or causal degradation.",
+    "The test partition may differ in engine lifecycle composition and observation length.",
+    "Rows from the same engine are not independent observations; row-level KS p-values can overstate evidence.",
+    "This is a screening experiment. A deployment system should also monitor engine-level summaries and use time-aware validation and operational feedback.",
+    "The reassessment rule is a predefined screening rule, not a learned optimal maintenance policy.",
+    "No test RUL labels were used to select thresholds or policies."
+  ],
+  "files": {
+    "sensor_results_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_2\\sensor_distribution_shift_FD001.csv",
+    "psi_plot": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_2\\sensor_distribution_shift_FD001.png",
+    "mean_comparison_plot": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_2\\sensor_mean_comparison_FD001.png"
+  }
+}

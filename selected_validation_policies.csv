@@ -1,0 +1,9 @@
+model,threshold,n_snapshots,n_engines,maintenance_actions,missed_critical_snapshots,missed_high_risk_snapshots,high_risk_snapshots,high_risk_miss_rate,false_alarm_actions,maintenance_cost,missed_critical_cost,false_alarm_cost,total_simulated_cost,cost_per_snapshot,safety_constraints_satisfied,cost_scenario,selection_status
+baseline,35.0,128,20,37,0,4,40,0.1,1,3700.0,0.0,50.0,3750.0,29.296875,True,standard,feasible_lowest_validation_cost
+temporal,40.0,128,20,40,0,3,40,0.075,3,4000.0,0.0,150.0,4150.0,32.421875,True,standard,feasible_lowest_validation_cost
+baseline,35.0,128,20,37,0,4,40,0.1,1,3700.0,0.0,50.0,3750.0,29.296875,True,high_failure_penalty,feasible_lowest_validation_cost
+temporal,40.0,128,20,40,0,3,40,0.075,3,4000.0,0.0,150.0,4150.0,32.421875,True,high_failure_penalty,feasible_lowest_validation_cost
+baseline,35.0,128,20,37,0,4,40,0.1,1,3700.0,0.0,50.0,3750.0,29.296875,True,lower_failure_penalty,feasible_lowest_validation_cost
+temporal,40.0,128,20,40,0,3,40,0.075,3,4000.0,0.0,150.0,4150.0,32.421875,True,lower_failure_penalty,feasible_lowest_validation_cost
+baseline,35.0,128,20,37,0,4,40,0.1,1,9250.0,0.0,100.0,9350.0,73.046875,True,high_maintenance_cost,feasible_lowest_validation_cost
+temporal,40.0,128,20,40,0,3,40,0.075,3,10000.0,0.0,300.0,10300.0,80.46875,True,high_maintenance_cost,feasible_lowest_validation_cost

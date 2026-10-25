@@ -1,0 +1,4 @@
+metric,observed_temporal_minus_baseline,bootstrap_mean_difference,CI_lower,CI_upper,confidence_level,interpretation
+RMSE_temporal_minus_baseline,1.0496064028647538,1.0372137155663737,-1.2442454026385834,3.5802943678683756,0.95,inconclusive: CI includes zero
+MAE_temporal_minus_baseline,-0.07785040151932066,-0.09037223159229915,-1.7322271804990867,1.7637045254227592,0.95,inconclusive: CI includes zero
+NASA_temporal_minus_baseline,872357.54002754,886808.2501357701,26372.31026559351,2412105.364689029,0.95,CI favors baseline

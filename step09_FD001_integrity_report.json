@@ -1,0 +1,102 @@
+{
+  "project": "Self-Evolving Explainable Rational Agent for Adaptive Industrial Decision Intelligence Using Statistical Trend Learning",
+  "dataset": "NASA C-MAPSS",
+  "subset": "FD001",
+  "step": "9",
+  "method": "Read-only artifact and experimental-integrity audit",
+  "run_timestamp_utc": "2026-10-25T09:57:28.547093+00:00",
+  "project_root": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS",
+  "audit_output_directory": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step09",
+  "scope": {
+    "retrained_models": false,
+    "modified_policy": false,
+    "selected_new_thresholds": false,
+    "used_test_labels_for_tuning": false,
+    "independently_reproduced_every_model_fit": false,
+    "verified_stored_artifacts_and_report_structures": true
+  },
+  "counts": {
+    "required_artifacts": 25,
+    "missing_required_artifacts": 0,
+    "files_inventoried": 230,
+    "json_reports_parsed": 38,
+    "csv_files_read": 136,
+    "audit_findings": 9,
+    "severity_counts": {
+      "ERROR": 0,
+      "WARNING": 3,
+      "INFO": 6
+    }
+  },
+  "evaluation_unit_cautions": [
+    "All-cycle and final-cycle metrics are not directly interchangeable.",
+    "Validation and test results must be reported separately.",
+    "Small engine-level validation samples give uncertain safety estimates.",
+    "Illustrative maintenance costs are not industrial cost evidence.",
+    "Distribution shift is not, by itself, proof of temporal concept drift.",
+    "A completed audit does not establish model correctness or deployment safety."
+  ],
+  "artifacts": {
+    "inventory_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step09\\step09_artifact_inventory_FD001.csv",
+    "findings_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step09\\step09_audit_findings_FD001.csv",
+    "metric_table_index_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step09\\step09_metric_table_index_FD001.csv",
+    "report_metadata_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step09\\step09_report_metadata_FD001.csv",
+    "markdown_report": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step09\\step09_FD001_integrity_report.md"
+  },
+  "findings": [
+    {
+      "severity": "WARNING",
+      "category": "EMPTY_CSV",
+      "artifact": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step10A\\step10A_scan_errors.csv",
+      "message": "CSV has headers or content but contains zero data rows."
+    },
+    {
+      "severity": "WARNING",
+      "category": "EMPTY_CSV",
+      "artifact": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step10J_final_evidence_synthesis\\step10J_issues.csv",
+      "message": "CSV has headers or content but contains zero data rows."
+    },
+    {
+      "severity": "INFO",
+      "category": "EVALUATION_UNITS",
+      "artifact": "Step 4 / Step 8.5 / Step 8.7",
+      "message": "All-cycle validation metrics and final-cycle engine metrics are different evaluation units. Do not compare them as though they measured the same set of observations."
+    },
+    {
+      "severity": "INFO",
+      "category": "CALIBRATION",
+      "artifact": "Step 8.5",
+      "message": "Calibration is post-processing fitted using training-partition out-of-fold predictions. It is not model retraining. Review the saved report and metrics before making improvement claims."
+    },
+    {
+      "severity": "INFO",
+      "category": "POLICY_COSTS",
+      "artifact": "Steps 6–8",
+      "message": "Maintenance costs are illustrative assumptions, not validated industrial cost estimates."
+    },
+    {
+      "severity": "WARNING",
+      "category": "SMALL_VALIDATION_SAMPLE",
+      "artifact": "Step 8 / Step 8.7",
+      "message": "The final-cycle validation policy evidence involves only 20 engines. Zero observed misses does not establish zero real-world failure risk."
+    },
+    {
+      "severity": "INFO",
+      "category": "DISTRIBUTION_SHIFT",
+      "artifact": "Step 8.2",
+      "message": "Training-to-test sensor distribution differences do not alone prove temporal concept drift, causal degradation, or policy failure."
+    },
+    {
+      "severity": "INFO",
+      "category": "SELF_EVOLUTION_CLAIM",
+      "artifact": "Steps 8.1–8.8",
+      "message": "Policy selection, calibration, drift detection, and auditing do not by themselves demonstrate continuous online learning. A controlled feedback-loop experiment is still needed to support a strong self-evolution claim."
+    },
+    {
+      "severity": "INFO",
+      "category": "TEST_SET_BOUNDARY",
+      "artifact": "All steps",
+      "message": "Test-set metrics are for final reporting only. Do not use them to tune models, calibration, thresholds, or claims."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+seed,candidate_accepted,mean_engine_RMSE_relative_improvement_percent,mean_engine_RMSE_improved,mean_engine_RMSE_worsened,mean_engine_MAE_relative_improvement_percent,mean_engine_MAE_improved,mean_engine_MAE_worsened,mean_engine_NASA_score_relative_improvement_percent,mean_engine_NASA_score_improved,mean_engine_NASA_score_worsened,gated_model_improved_any_metric,gated_model_worsened_any_metric,gated_model_improved_all_metrics,gated_model_worsened_all_metrics,accepted_then_any_metric_worsened,accepted_then_all_metrics_improved,rejected_actual_model_all_metrics_improved,rejected_actual_model_any_metric_worsened
+101,False,0.0,False,False,0.0,False,False,0.0,False,False,False,False,False,False,False,False,False,False
+202,False,0.0,False,False,0.0,False,False,0.0,False,False,False,False,False,False,False,False,False,False
+303,False,0.0,False,False,0.0,False,False,0.0,False,False,False,False,False,False,False,False,False,False
+404,True,3.6777264433186665,True,False,2.233640597375967,True,False,14.321952197076959,True,False,True,False,True,False,False,True,False,False
+505,True,2.011760216309022,True,False,3.4984856486260525,True,False,17.458715006651698,True,False,True,False,True,False,False,True,False,False
+606,True,-0.40367003229066456,False,True,-0.7986791573986528,False,True,-211.74985816399067,False,True,False,True,False,True,True,False,False,False
+707,False,0.0,False,False,0.0,False,False,0.0,False,False,False,False,False,False,False,False,False,False
+808,False,0.0,False,False,0.0,False,False,0.0,False,False,False,False,False,False,False,False,False,False
+909,False,0.0,False,False,0.0,False,False,0.0,False,False,False,False,False,False,False,False,False,False
+1010,True,17.99815774860989,True,False,15.60602616015217,True,False,87.44820758691174,True,False,True,False,True,False,False,True,False,False

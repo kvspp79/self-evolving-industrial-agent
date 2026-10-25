@@ -1,0 +1,92 @@
+{
+  "step": "8.3",
+  "project": "NASA C-MAPSS",
+  "subset": "FD001",
+  "run_time_utc": "2026-10-25T09:54:25.072034+00:00",
+  "purpose": "Auditable synthesis of sensor-shift evidence, SHAP feature attribution, model metrics, and frozen-policy context.",
+  "drift_screening": {
+    "sensors_assessed": 15,
+    "sensors_flagged_for_review": 14,
+    "flagged_sensor_fraction": 0.9333333333333333,
+    "review_triggered": true,
+    "minimum_sensor_count": 3,
+    "minimum_fraction": 0.2
+  },
+  "explainability": {
+    "shap_file_found": true,
+    "shap_file": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step05\\shap_feature_importance_FD001.csv",
+    "feature_column": "feature",
+    "shap_value_column": "mean_absolute_SHAP",
+    "sensor_level_shap_match_available": true,
+    "interpretation": "SHAP values describe predictive attribution, not causation."
+  },
+  "prediction_metrics": [
+    {
+      "split": "validation",
+      "model": "baseline",
+      "n_rows": 4070,
+      "RMSE": 31.165128250460647,
+      "MAE": 23.658393051671368,
+      "NASA_score": 296684.2437773973,
+      "mean_error_predicted_minus_actual": 4.946874976040521
+    },
+    {
+      "split": "validation",
+      "model": "temporal",
+      "n_rows": 4070,
+      "RMSE": 32.2147346533254,
+      "MAE": 23.580542650152047,
+      "NASA_score": 1169041.7838049373,
+      "mean_error_predicted_minus_actual": 2.2139888778918313
+    },
+    {
+      "split": "test_descriptive",
+      "model": "baseline",
+      "n_rows": 100,
+      "RMSE": 27.1314374757794,
+      "MAE": 19.635369036100567,
+      "NASA_score": 13616.155156991405,
+      "mean_error_predicted_minus_actual": 10.82513142946723
+    },
+    {
+      "split": "test_descriptive",
+      "model": "temporal",
+      "n_rows": 100,
+      "RMSE": 26.0177353199439,
+      "MAE": 18.0229410288076,
+      "NASA_score": 11040.4432459041,
+      "mean_error_predicted_minus_actual": 10.213237895091515
+    }
+  ],
+  "validation_temporal_vs_baseline": {
+    "RMSE_temporal_improvement_percent": -3.3678873208206346,
+    "MAE_temporal_improvement_percent": 0.3290603945470457,
+    "NASA_score_temporal_improvement_percent": -294.03568215171924
+  },
+  "policy_context": {
+    "step08_report_found": true,
+    "step072_report_found": true,
+    "policy_modified": false,
+    "model_retrained": false,
+    "test_labels_used_for_policy_selection": false
+  },
+  "recommendations": [
+    "Review sensor distributions and feature stability before relying on the current policy under changed conditions.",
+    "Prioritize review of sensors that are both shifted and associated with high SHAP importance, while treating SHAP as predictive attribution rather than causal evidence.",
+    "Temporal model validation RMSE is worse than baseline in this comparison; investigate before preferring the temporal model.",
+    "Any recalibration or policy update must be evaluated using labeled validation data and compared with the frozen policy.",
+    "Do not interpret training-to-test sensor shift alone as confirmed temporal drift, causal degradation, or proof of maintenance-policy failure."
+  ],
+  "limitations": [
+    "This is a review and audit layer, not an adaptation algorithm.",
+    "Distribution shift does not prove concept drift or causal degradation.",
+    "SHAP feature importance is not causal evidence.",
+    "Prediction metrics from test labels, if present in the Step 4 artifact, are descriptive and are not used for policy selection.",
+    "A deployment claim requires repeated engine-level validation, a frozen-policy comparison, and explicit safety constraints."
+  ],
+  "files": {
+    "audit_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_3\\explainable_adaptation_audit_FD001.csv",
+    "audit_plot": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_3\\adaptation_audit_FD001.png",
+    "report_json": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_3\\step08_3_FD001_report.json"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "experiment": "safety_gated_self_evolution_under_synthetic_sensor_shift",
+  "status": "completed",
+  "dataset": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step01\\train_FD001_processed.csv",
+  "random_seed": 20261025,
+  "synthetic_shift_seed": 4107,
+  "base_engine_count": 60,
+  "adaptation_engine_count": 15,
+  "gate_validation_engine_count": 10,
+  "final_heldout_engine_count": 15,
+  "adaptation_rounds": 3,
+  "accepted_updates": 0,
+  "rejected_updates": 3,
+  "safety_gate": {
+    "max_allowed_relative_degradation": 0.02,
+    "minimum_required_snapshot_improvement": 0.01,
+    "monitored_metrics": [
+      "RMSE",
+      "MAE",
+      "NASA_PHM_score"
+    ],
+    "evaluation_slices": [
+      "all_cycles",
+      "50/70/90-percent life snapshots"
+    ]
+  },
+  "synthetic_sensor_shift_standard_deviation_units": {
+    "sensor_04": 0.6,
+    "sensor_07": -0.6,
+    "sensor_11": 0.8,
+    "sensor_12": -0.7,
+    "sensor_15": 0.65
+  },
+  "engine_groups_disjoint": true,
+  "final_evaluation_used_for_update_or_selection": false,
+  "official_NASA_test_file_used": false,
+  "interpretation_limits": [
+    "The sensor shift is synthetic, not observed real-world drift.",
+    "Gate validation uses a limited number of engines.",
+    "Accepted updates do not prove deployment safety.",
+    "Rows within an engine are dependent.",
+    "All-cycle rows must not be treated as independent engines.",
+    "Random Forest feature importance is not causal or local SHAP.",
+    "The experiment demonstrates constrained updating and rollback, not unrestricted autonomous learning.",
+    "Rejecting every update is a valid outcome if the candidates fail the predefined gate."
+  ],
+  "outputs": [
+    "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step10D_safety_gated_evolution\\step10D_final_metrics.csv",
+    "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step10D_safety_gated_evolution\\step10D_update_decisions.csv",
+    "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step10D_safety_gated_evolution\\step10D_feature_importance_change.csv",
+    "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step10D_safety_gated_evolution\\step10D_report.json"
+  ]
+}

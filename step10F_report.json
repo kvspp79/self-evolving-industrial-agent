@@ -1,0 +1,126 @@
+{
+  "project": "Self-Evolving Explainable Industrial Agent",
+  "experiment": "Step 10F repeated-seed robustness evaluation",
+  "dataset": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step01\\train_FD001_processed.csv",
+  "seeds_requested": [
+    101,
+    202,
+    303,
+    404,
+    505,
+    606,
+    707,
+    808,
+    909,
+    1010
+  ],
+  "successful_seeds": [
+    101,
+    202,
+    303,
+    404,
+    505,
+    606,
+    707,
+    808,
+    909,
+    1010
+  ],
+  "failed_runs": [],
+  "n_rows": 20631,
+  "n_engines": 100,
+  "feature_columns": [
+    "cycle",
+    "setting_1",
+    "setting_2",
+    "setting_3",
+    "sensor_01",
+    "sensor_02",
+    "sensor_03",
+    "sensor_04",
+    "sensor_05",
+    "sensor_06",
+    "sensor_07",
+    "sensor_08",
+    "sensor_09",
+    "sensor_10",
+    "sensor_11",
+    "sensor_12",
+    "sensor_13",
+    "sensor_14",
+    "sensor_15",
+    "sensor_16",
+    "sensor_17",
+    "sensor_18",
+    "sensor_19",
+    "sensor_20",
+    "sensor_21"
+  ],
+  "synthetic_shift": {
+    "sensor_04": 0.6,
+    "sensor_07": -0.6,
+    "sensor_11": 0.8,
+    "sensor_12": -0.7,
+    "sensor_15": 0.65
+  },
+  "model_config": {
+    "n_estimators": 200,
+    "min_samples_leaf": 2,
+    "max_features": 1.0,
+    "random_state": 42,
+    "n_jobs": -1
+  },
+  "fixed_gate": {
+    "max_allowed_relative_worsening": 0.02,
+    "minimum_required_relative_improvement": 0.01,
+    "candidate_strategy": "engine-balanced adaptation 2x"
+  },
+  "gate_acceptance_count": 4,
+  "gate_rejection_count": 6,
+  "improvement_counts_vs_frozen_baseline": {
+    "unconditional_retraining": {
+      "mean_engine_RMSE": {
+        "seeds_improved": 8,
+        "successful_seeds": 10
+      },
+      "mean_engine_MAE": {
+        "seeds_improved": 8,
+        "successful_seeds": 10
+      },
+      "mean_engine_NASA_score": {
+        "seeds_improved": 7,
+        "successful_seeds": 10
+      }
+    },
+    "safety_gated_model": {
+      "mean_engine_RMSE": {
+        "seeds_improved": 4,
+        "successful_seeds": 10
+      },
+      "mean_engine_MAE": {
+        "seeds_improved": 3,
+        "successful_seeds": 10
+      },
+      "mean_engine_NASA_score": {
+        "seeds_improved": 7,
+        "successful_seeds": 10
+      }
+    }
+  },
+  "interpretation_limitations": [
+    "The sensor shift is synthetic, not observed real-world drift.",
+    "Only the reported seeds and split protocol were evaluated.",
+    "Repeated seeds reuse the same dataset and are not independent deployments.",
+    "The gate-validation set selects acceptance; it is not the final test set.",
+    "Final held-out results must not be used to revise the gate or choose a strategy.",
+    "NASA score is asymmetric and can be dominated by large prediction errors.",
+    "This experiment alone does not establish causal explanations or safe real-world autonomy."
+  ],
+  "output_files": {
+    "per_seed_final_metrics": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step10F_repeated_seed_robustness\\step10F_per_seed_final_metrics.csv",
+    "final_engine_metrics": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step10F_repeated_seed_robustness\\step10F_final_engine_metrics.csv",
+    "gate_decisions": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step10F_repeated_seed_robustness\\step10F_gate_decisions.csv",
+    "across_seed_summary": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step10F_repeated_seed_robustness\\step10F_across_seed_summary.csv",
+    "paired_seed_improvements": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step10F_repeated_seed_robustness\\step10F_paired_seed_improvements.csv"
+  }
+}

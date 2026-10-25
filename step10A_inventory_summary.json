@@ -1,0 +1,24 @@
+{
+  "step": "10A",
+  "title": "Cross-Dataset Evidence Inventory",
+  "generated_utc": "2026-10-25T10:00:39.652031+00:00",
+  "purpose": "Inventory existing artifacts for paper preparation; no model fitting or policy selection.",
+  "projects": {
+    "AI4I_2020": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent",
+    "NASA_CMAPSS_FD001": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS"
+  },
+  "files_inventoried": 306,
+  "research_candidate_files": 206,
+  "json_parsed": 47,
+  "json_parse_errors": 0,
+  "csv_readable": 166,
+  "csv_read_errors": 0,
+  "scan_errors": 0,
+  "outputs": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step10A",
+  "limitations": [
+    "File readability does not validate scientific correctness.",
+    "JSON scalar values are indexed, not automatically interpreted as comparable metrics.",
+    "Metric comparability must be reviewed using each report's evaluation unit, dataset, and task.",
+    "Test-set results must not be used for model or policy tuning."
+  ]
+}

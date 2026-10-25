@@ -1,0 +1,212 @@
+{
+  "project": "Self-Evolving Explainable Rational Agent for Adaptive Industrial Decision Intelligence Using Statistical Trend Learning",
+  "dataset": "NASA C-MAPSS",
+  "subset": "FD001",
+  "step": "8.7",
+  "method": "Validation-only threshold reassessment and safety audit",
+  "run_timestamp_utc": "2026-10-25T09:57:26.526577+00:00",
+  "input": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_5\\validation_calibrated_predictions_FD001.csv",
+  "validation_input_rows": 4070,
+  "final_cycle_validation_engines": 20,
+  "test_data_used": false,
+  "test_labels_used": false,
+  "model_retrained": false,
+  "frozen_policy_modified": false,
+  "policy_deployed": false,
+  "decision_unit": "one final observed validation cycle per engine",
+  "prediction_variants": [
+    "baseline_raw",
+    "baseline_calibrated",
+    "temporal_raw",
+    "temporal_calibrated"
+  ],
+  "safety_constraints": {
+    "critical_RUL_cycles": 15.0,
+    "high_risk_RUL_cycles": 30.0,
+    "maximum_missed_critical_engines": 0,
+    "maximum_high_risk_miss_rate": 0.1
+  },
+  "illustrative_cost_assumptions": {
+    "maintenance_cost": 100.0,
+    "missed_critical_cost": 1000.0,
+    "false_alarm_cost": 50.0,
+    "real_industrial_cost_estimates": false
+  },
+  "frozen_thresholds": {
+    "baseline": 10.0,
+    "temporal": 5.0
+  },
+  "selected_validation_candidates": [
+    {
+      "threshold_cycles": 10.0,
+      "n_engines": 20,
+      "maintenance_actions": 20,
+      "critical_engines": 20,
+      "missed_critical_engines": 0,
+      "high_risk_engines": 20,
+      "missed_high_risk_engines": 0,
+      "high_risk_miss_rate": 0.0,
+      "false_alarm_engines": 0,
+      "illustrative_cost": 2000.0,
+      "safety_feasible": true,
+      "variant": "baseline_raw",
+      "prediction_column": "baseline_raw_RUL",
+      "evaluation_type": "candidate_threshold",
+      "selection_status": "LOWEST_COST_FEASIBLE_VALIDATION_CANDIDATE",
+      "selected_threshold_cycles": 10.0
+    },
+    {
+      "threshold_cycles": 15.0,
+      "n_engines": 20,
+      "maintenance_actions": 20,
+      "critical_engines": 20,
+      "missed_critical_engines": 0,
+      "high_risk_engines": 20,
+      "missed_high_risk_engines": 0,
+      "high_risk_miss_rate": 0.0,
+      "false_alarm_engines": 0,
+      "illustrative_cost": 2000.0,
+      "safety_feasible": true,
+      "variant": "baseline_calibrated",
+      "prediction_column": "baseline_calibrated_RUL",
+      "evaluation_type": "candidate_threshold",
+      "selection_status": "LOWEST_COST_FEASIBLE_VALIDATION_CANDIDATE",
+      "selected_threshold_cycles": 15.0
+    },
+    {
+      "threshold_cycles": 5.0,
+      "n_engines": 20,
+      "maintenance_actions": 20,
+      "critical_engines": 20,
+      "missed_critical_engines": 0,
+      "high_risk_engines": 20,
+      "missed_high_risk_engines": 0,
+      "high_risk_miss_rate": 0.0,
+      "false_alarm_engines": 0,
+      "illustrative_cost": 2000.0,
+      "safety_feasible": true,
+      "variant": "temporal_raw",
+      "prediction_column": "temporal_raw_RUL",
+      "evaluation_type": "candidate_threshold",
+      "selection_status": "LOWEST_COST_FEASIBLE_VALIDATION_CANDIDATE",
+      "selected_threshold_cycles": 5.0
+    },
+    {
+      "threshold_cycles": 15.0,
+      "n_engines": 20,
+      "maintenance_actions": 20,
+      "critical_engines": 20,
+      "missed_critical_engines": 0,
+      "high_risk_engines": 20,
+      "missed_high_risk_engines": 0,
+      "high_risk_miss_rate": 0.0,
+      "false_alarm_engines": 0,
+      "illustrative_cost": 2000.0,
+      "safety_feasible": true,
+      "variant": "temporal_calibrated",
+      "prediction_column": "temporal_calibrated_RUL",
+      "evaluation_type": "candidate_threshold",
+      "selection_status": "LOWEST_COST_FEASIBLE_VALIDATION_CANDIDATE",
+      "selected_threshold_cycles": 15.0
+    }
+  ],
+  "final_cycle_regression_metrics": [
+    {
+      "variant": "baseline_raw",
+      "prediction_column": "baseline_raw_RUL",
+      "n_engines": 20,
+      "RMSE": 3.9197920812973925,
+      "MAE": 3.458183282729732,
+      "NASA_score": 8.781228194717405,
+      "mean_error_predicted_minus_actual": 3.458183282729732
+    },
+    {
+      "variant": "baseline_calibrated",
+      "prediction_column": "baseline_calibrated_RUL",
+      "n_engines": 20,
+      "RMSE": 6.825844124827013,
+      "MAE": 6.587888158594734,
+      "NASA_score": 19.311593856960712,
+      "mean_error_predicted_minus_actual": 6.587888158594734
+    },
+    {
+      "variant": "temporal_raw",
+      "prediction_column": "temporal_raw_RUL",
+      "n_engines": 20,
+      "RMSE": 2.2100492106460226,
+      "MAE": 2.04217593181478,
+      "NASA_score": 4.620204597916448,
+      "mean_error_predicted_minus_actual": 2.04217593181478
+    },
+    {
+      "variant": "temporal_calibrated",
+      "prediction_column": "temporal_calibrated_RUL",
+      "n_engines": 20,
+      "RMSE": 9.421772387815968,
+      "MAE": 9.387190838467527,
+      "NASA_score": 31.302821022836596,
+      "mean_error_predicted_minus_actual": 9.387190838467527
+    }
+  ],
+  "bootstrap": {
+    "draws": 2000,
+    "seed": 42,
+    "resampling_unit": "validation engine",
+    "results": [
+      {
+        "comparison": "baseline_raw_RUL_minus_baseline_calibrated_RUL",
+        "observed_RMSE_difference": -2.90605204352962,
+        "bootstrap_CI_lower_95": -3.03019883189157,
+        "bootstrap_CI_upper_95": -2.8471604647100235,
+        "interpretation": "CI favors B",
+        "bootstrap_draws": 2000,
+        "resampling_unit": "validation engine"
+      },
+      {
+        "comparison": "temporal_raw_RUL_minus_temporal_calibrated_RUL",
+        "observed_RMSE_difference": -7.2117231771699455,
+        "bootstrap_CI_lower_95": -7.274989336225564,
+        "bootstrap_CI_upper_95": -7.16342991017026,
+        "interpretation": "CI favors B",
+        "bootstrap_draws": 2000,
+        "resampling_unit": "validation engine"
+      },
+      {
+        "comparison": "baseline_raw_RUL_minus_temporal_raw_RUL",
+        "observed_RMSE_difference": 1.70974287065137,
+        "bootstrap_CI_lower_95": 0.8290974252579846,
+        "bootstrap_CI_upper_95": 2.5465178394612344,
+        "interpretation": "CI favors A",
+        "bootstrap_draws": 2000,
+        "resampling_unit": "validation engine"
+      },
+      {
+        "comparison": "baseline_calibrated_RUL_minus_temporal_calibrated_RUL",
+        "observed_RMSE_difference": -2.5959282629889557,
+        "bootstrap_CI_lower_95": -3.3740035223725307,
+        "bootstrap_CI_upper_95": -1.8088030235795072,
+        "interpretation": "CI favors B",
+        "bootstrap_draws": 2000,
+        "resampling_unit": "validation engine"
+      }
+    ]
+  },
+  "limitations": [
+    "Only 20 validation engines are available; safety estimates are unstable.",
+    "Thresholds are selected and evaluated on the same small validation set, so reported candidate costs are optimistic selection estimates.",
+    "Bootstrap intervals are exploratory and cannot compensate for the small number of engines.",
+    "Costs are illustrative assumptions, not validated industrial costs.",
+    "A feasible threshold on this validation set is not proof of operational safety.",
+    "No independent test evaluation is performed in this step.",
+    "This step does not demonstrate continuous online learning or deployment."
+  ],
+  "artifacts": {
+    "regression_metrics_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_7\\step08_7_final_cycle_regression_metrics_FD001.csv",
+    "all_threshold_candidates_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_7\\step08_7_all_validation_threshold_candidates_FD001.csv",
+    "frozen_threshold_reference_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_7\\step08_7_frozen_threshold_reference_FD001.csv",
+    "selected_validation_candidates_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_7\\step08_7_selected_validation_candidates_FD001.csv",
+    "bootstrap_results_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_7\\step08_7_engine_bootstrap_FD001.csv",
+    "engine_decisions_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_7\\step08_7_final_cycle_engine_decisions_FD001.csv",
+    "plot": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_7\\step08_7_threshold_safety_audit_FD001.png"
+  }
+}

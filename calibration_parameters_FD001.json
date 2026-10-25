@@ -1,0 +1,26 @@
+{
+  "dataset": "NASA C-MAPSS FD001",
+  "method": "one-dimensional linear calibration",
+  "fit_data": "training-partition out-of-fold predictions only",
+  "random_state": 42,
+  "oof_splits": 5,
+  "training_engines": 80,
+  "validation_engines": 20,
+  "baseline_calibrator": {
+    "intercept": 3.2400420699467816,
+    "slope": 0.9680938848346163
+  },
+  "temporal_calibrator": {
+    "intercept": 7.437800121419201,
+    "slope": 0.9545655135187104
+  },
+  "limitations": [
+    "Calibration is a candidate post-processing method, not model retraining.",
+    "OOF predictions are generated at the engine level.",
+    "Validation labels are evaluation-only.",
+    "The calibration may not generalize to other datasets or subsets.",
+    "Only FD001 is assessed in this step.",
+    "No test labels are read or used.",
+    "No maintenance policy is modified or deployed."
+  ]
+}

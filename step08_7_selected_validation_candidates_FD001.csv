@@ -1,0 +1,5 @@
+threshold_cycles,n_engines,maintenance_actions,critical_engines,missed_critical_engines,high_risk_engines,missed_high_risk_engines,high_risk_miss_rate,false_alarm_engines,illustrative_cost,safety_feasible,variant,prediction_column,evaluation_type,selection_status,selected_threshold_cycles
+10.0,20,20,20,0,20,0,0.0,0,2000.0,True,baseline_raw,baseline_raw_RUL,candidate_threshold,LOWEST_COST_FEASIBLE_VALIDATION_CANDIDATE,10.0
+15.0,20,20,20,0,20,0,0.0,0,2000.0,True,baseline_calibrated,baseline_calibrated_RUL,candidate_threshold,LOWEST_COST_FEASIBLE_VALIDATION_CANDIDATE,15.0
+5.0,20,20,20,0,20,0,0.0,0,2000.0,True,temporal_raw,temporal_raw_RUL,candidate_threshold,LOWEST_COST_FEASIBLE_VALIDATION_CANDIDATE,5.0
+15.0,20,20,20,0,20,0,0.0,0,2000.0,True,temporal_calibrated,temporal_calibrated_RUL,candidate_threshold,LOWEST_COST_FEASIBLE_VALIDATION_CANDIDATE,15.0

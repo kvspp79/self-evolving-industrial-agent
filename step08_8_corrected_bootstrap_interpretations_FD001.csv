@@ -1,0 +1,5 @@
+comparison,observed_RMSE_difference,bootstrap_CI_lower_95,bootstrap_CI_upper_95,interpretation,bootstrap_draws,resampling_unit,interpretation_before_audit,interpretation_corrected
+baseline_raw_RUL_minus_baseline_calibrated_RUL,-2.90605204352962,-3.03019883189157,-2.8471604647100235,CI favors B,2000,validation engine,CI favors B,95% bootstrap CI favors baseline_raw_RUL (A has lower RMSE)
+temporal_raw_RUL_minus_temporal_calibrated_RUL,-7.2117231771699455,-7.274989336225564,-7.16342991017026,CI favors B,2000,validation engine,CI favors B,95% bootstrap CI favors temporal_raw_RUL (A has lower RMSE)
+baseline_raw_RUL_minus_temporal_raw_RUL,1.70974287065137,0.8290974252579846,2.5465178394612344,CI favors A,2000,validation engine,CI favors A,95% bootstrap CI favors temporal_raw_RUL (B has lower RMSE)
+baseline_calibrated_RUL_minus_temporal_calibrated_RUL,-2.595928262988956,-3.3740035223725307,-1.8088030235795072,CI favors B,2000,validation engine,CI favors B,95% bootstrap CI favors baseline_calibrated_RUL (A has lower RMSE)

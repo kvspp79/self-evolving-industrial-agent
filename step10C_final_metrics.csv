@@ -1,0 +1,5 @@
+model,evaluation_unit,n_rows_or_engines,RMSE,MAE,NASA_PHM_score_lower_is_better,mean_prediction_error_pred_minus_actual
+frozen_baseline,all_cycles_rows,2855,34.28824931877528,25.411457152405838,420525.8239335891,-0.463444376614455
+self_evolved_after_3_updates,all_cycles_rows,2855,32.74604616703946,24.33674667660393,276642.0050440855,3.1429593562138476
+frozen_baseline,one_final_cycle_per_heldout_engine,15,2.1121640089193927,2.044891317230709,3.4292796450463037,2.044891317230709
+self_evolved_after_3_updates,one_final_cycle_per_heldout_engine,15,3.5918424392288224,3.3040215621842686,6.09038967152723,3.3040215621842686

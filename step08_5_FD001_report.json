@@ -1,0 +1,74 @@
+{
+  "step": "8.5",
+  "dataset": "NASA C-MAPSS FD001",
+  "method": "training-only out-of-fold linear calibration",
+  "training_oof_rows": 16561,
+  "training_engines": 80,
+  "validation_rows": 4070,
+  "validation_engines": 20,
+  "oof_splits": 5,
+  "calibration_parameters": {
+    "dataset": "NASA C-MAPSS FD001",
+    "method": "one-dimensional linear calibration",
+    "fit_data": "training-partition out-of-fold predictions only",
+    "random_state": 42,
+    "oof_splits": 5,
+    "training_engines": 80,
+    "validation_engines": 20,
+    "baseline_calibrator": {
+      "intercept": 3.2400420699467816,
+      "slope": 0.9680938848346163
+    },
+    "temporal_calibrator": {
+      "intercept": 7.437800121419201,
+      "slope": 0.9545655135187104
+    },
+    "limitations": [
+      "Calibration is a candidate post-processing method, not model retraining.",
+      "OOF predictions are generated at the engine level.",
+      "Validation labels are evaluation-only.",
+      "The calibration may not generalize to other datasets or subsets.",
+      "Only FD001 is assessed in this step.",
+      "No test labels are read or used.",
+      "No maintenance policy is modified or deployed."
+    ]
+  },
+  "validation_metrics": [
+    {
+      "model_variant": "baseline_raw",
+      "n_rows": 4070,
+      "RMSE": 31.165128250460647,
+      "MAE": 23.658393051671368,
+      "NASA_score": 296684.2437773973,
+      "mean_error_predicted_minus_actual": 4.946874976040521
+    },
+    {
+      "model_variant": "baseline_calibrated",
+      "n_rows": 4070,
+      "RMSE": 31.04133128060023,
+      "MAE": 23.80854375210894,
+      "NASA_score": 248097.10410730253,
+      "mean_error_predicted_minus_actual": 4.6633469430004535
+    },
+    {
+      "model_variant": "temporal_raw",
+      "n_rows": 4070,
+      "RMSE": 32.2147346533254,
+      "MAE": 23.580542650152047,
+      "NASA_score": 1169041.7838049373,
+      "mean_error_predicted_minus_actual": 2.2139888778918313
+    },
+    {
+      "model_variant": "temporal_calibrated",
+      "n_rows": 4070,
+      "RMSE": 32.347299873114295,
+      "MAE": 24.496745238510123,
+      "NASA_score": 960031.5887923151,
+      "mean_error_predicted_minus_actual": 4.758372737959302
+    }
+  ],
+  "interpretation": "Compare calibrated variants with their corresponding raw variants. Calibration is a candidate only; do not assume it improves performance unless the validation metrics support that conclusion.",
+  "test_set_used": false,
+  "model_retrained_for_deployment": false,
+  "policy_changed": false
+}

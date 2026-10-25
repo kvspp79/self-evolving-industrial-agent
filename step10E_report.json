@@ -1,0 +1,53 @@
+{
+  "experiment": "self_evolution_diagnosis_and_candidate_update_evaluation",
+  "status": "completed",
+  "dataset": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step01\\train_FD001_processed.csv",
+  "seed": 20261025,
+  "base_engines": 55,
+  "adaptation_engines": 15,
+  "gate_engines": 15,
+  "final_heldout_engines": 15,
+  "candidate_strategies": [
+    "replay_1x",
+    "adaptation_2x",
+    "adaptation_4x",
+    "engine_balanced_2x"
+  ],
+  "selected_strategy": "engine_balanced_2x",
+  "selection_status": "candidate_accepted_and_selected",
+  "synthetic_sensor_shift": {
+    "sensor_04": 0.6,
+    "sensor_07": -0.6,
+    "sensor_11": 0.8,
+    "sensor_12": -0.7,
+    "sensor_15": 0.65
+  },
+  "gate_criteria": {
+    "max_allowed_degradation": 0.02,
+    "minimum_required_improvement": 0.01,
+    "metrics": [
+      "mean_engine_RMSE",
+      "mean_engine_MAE",
+      "mean_engine_NASA_score"
+    ],
+    "aggregation": "Mean of per-engine metrics"
+  },
+  "final_evaluation_used_for_selection": false,
+  "official_NASA_test_file_used": false,
+  "limitations": [
+    "The sensor shift is synthetic.",
+    "The gate-validation set contains a limited number of engines.",
+    "Candidate strategies are selected using the same gate set, so validation results may be optimistic.",
+    "The final held-out evaluation is separate and must remain untouched.",
+    "Random Forest feature importance is not causal.",
+    "This experiment evaluates controlled model updates, not unrestricted autonomous learning.",
+    "One split does not establish generalization; repeat with prespecified engine splits and shift scenarios."
+  ],
+  "outputs": [
+    "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step10E_evolution_diagnosis\\step10E_candidate_strategy_validation.csv",
+    "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step10E_evolution_diagnosis\\step10E_final_metrics.csv",
+    "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step10E_evolution_diagnosis\\step10E_final_engine_metrics.csv",
+    "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step10E_evolution_diagnosis\\step10E_feature_importance_change.csv",
+    "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step10E_evolution_diagnosis\\step10E_report.json"
+  ]
+}

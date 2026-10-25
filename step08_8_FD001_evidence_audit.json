@@ -1,0 +1,73 @@
+{
+  "project": "Self-Evolving Explainable Rational Agent for Adaptive Industrial Decision Intelligence Using Statistical Trend Learning",
+  "dataset": "NASA C-MAPSS",
+  "subset": "FD001",
+  "step": "8.8",
+  "method": "Evidence synthesis and research-integrity audit",
+  "generated_utc": "2026-10-25T09:57:27.733201+00:00",
+  "actions_performed": [
+    "Read existing JSON reports from known step output directories",
+    "Inventoried existing step artifacts",
+    "Created a separate corrected copy of bootstrap interpretation labels",
+    "Generated a Markdown evidence audit"
+  ],
+  "actions_not_performed": [
+    "No model retraining",
+    "No test-label-driven tuning",
+    "No maintenance-policy modification",
+    "No deployment"
+  ],
+  "bootstrap_interpretation_audit": {
+    "status": "corrected_copy_created",
+    "input": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_7\\step08_7_engine_bootstrap_FD001.csv",
+    "output": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_8\\step08_8_corrected_bootstrap_interpretations_FD001.csv",
+    "rows": 4,
+    "comparison_column": "comparison",
+    "observed_difference_column": "observed_RMSE_difference",
+    "ci_lower_column": "bootstrap_CI_lower_95",
+    "ci_upper_column": "bootstrap_CI_upper_95",
+    "original_interpretation_column": "interpretation",
+    "corrected_interpretation_column": "interpretation_corrected",
+    "assumption": "Each comparison is A_minus_B and the observed difference is RMSE(A) - RMSE(B). A negative interval favors A; a positive interval favors B; an interval containing zero is inconclusive."
+  },
+  "extracted_findings": [
+    "Step 8.5 fitted linear calibration using training-partition out-of-fold predictions only. Validation labels were evaluation-only; no test labels were used.",
+    "baseline_calibrator: intercept=3.2400420699467816, slope=0.9680938848346163.",
+    "temporal_calibrator: intercept=7.437800121419201, slope=0.9545655135187104.",
+    "Step 8.7 final-cycle regression metrics were read from step08_7_final_cycle_regression_metrics_FD001.csv; they refer to 20 validation engines, not all 4,070 validation cycle rows."
+  ],
+  "report_files": {
+    "markdown_report": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_8\\step08_8_FD001_evidence_audit.md",
+    "json_report": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_8\\step08_8_FD001_evidence_audit.json",
+    "artifact_inventory": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_8\\step08_8_artifact_inventory_FD001.csv",
+    "corrected_bootstrap_copy": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_8\\step08_8_corrected_bootstrap_interpretations_FD001.csv"
+  },
+  "loaded_json_report_paths": [
+    "step02\\step02_FD001_report.json",
+    "step03\\step03_FD001_report.json",
+    "step04\\step04_FD001_report.json",
+    "step05\\step05_FD001_report.json",
+    "step06\\step06_FD001_report.json",
+    "step07\\step07_FD001_report.json",
+    "step07_1\\step07_1_FD001_report.json",
+    "step07_2\\step07_2_FD001_report.json",
+    "step08\\step08_FD001_report.json",
+    "step08_1\\step08_1_FD001_report.json",
+    "step08_2\\step08_2_FD001_report.json",
+    "step08_3\\step08_3_FD001_report.json",
+    "step08_4\\step08_4_FD001_report.json",
+    "step08_5\\calibration_parameters_FD001.json",
+    "step08_5\\step08_5_FD001_report.json",
+    "step08_6\\step08_6_FD001_report.json",
+    "step08_7\\step08_7_FD001_report.json"
+  ],
+  "limitations": [
+    "Only FD001 is audited.",
+    "This is a synthesis of existing outputs, not a full independent rerun.",
+    "Only 20 engines are available in the reported validation partition.",
+    "Illustrative maintenance costs are not measured industrial costs.",
+    "Calibration results may not generalize to other subsets or datasets.",
+    "The workflow does not prove continuous online self-evolution.",
+    "Test results must not be used to retune the system."
+  ]
+}

@@ -1,0 +1,4 @@
+adaptation_round,newly_observed_engines,cumulative_adaptation_engines,newly_labelled_rows,cumulative_replay_rows,update_method,heldout_evaluation_used_for_update
+1,5,5,1000,15719,Refit fixed-configuration RandomForest on original replay data plus newly labelled shifted adaptation batches,False
+2,5,10,1164,16883,Refit fixed-configuration RandomForest on original replay data plus newly labelled shifted adaptation batches,False
+3,5,15,893,17776,Refit fixed-configuration RandomForest on original replay data plus newly labelled shifted adaptation batches,False

@@ -1,0 +1,59 @@
+{
+  "step": "8.4",
+  "dataset": "NASA C-MAPSS FD001",
+  "analysis": "paired engine-level cluster bootstrap",
+  "input_file": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step04\\validation_predictions_FD001.csv",
+  "validation_rows": 4070,
+  "validation_engines": 20,
+  "bootstrap_resamples": 2000,
+  "random_seed": 42,
+  "confidence_level": 0.95,
+  "point_metrics": {
+    "n_rows": 4070,
+    "n_engines": 20,
+    "baseline_RMSE": 31.165128250460647,
+    "temporal_RMSE": 32.2147346533254,
+    "baseline_MAE": 23.658393051671368,
+    "temporal_MAE": 23.580542650152047,
+    "baseline_NASA_score": 296684.2437773973,
+    "temporal_NASA_score": 1169041.7838049373
+  },
+  "difference_definition": "temporal metric minus baseline metric; lower is better",
+  "bootstrap_summary": [
+    {
+      "metric": "RMSE_temporal_minus_baseline",
+      "observed_temporal_minus_baseline": 1.0496064028647538,
+      "bootstrap_mean_difference": 1.0372137155663737,
+      "CI_lower": -1.2442454026385834,
+      "CI_upper": 3.5802943678683756,
+      "confidence_level": 0.95,
+      "interpretation": "inconclusive: CI includes zero"
+    },
+    {
+      "metric": "MAE_temporal_minus_baseline",
+      "observed_temporal_minus_baseline": -0.07785040151932066,
+      "bootstrap_mean_difference": -0.09037223159229915,
+      "CI_lower": -1.7322271804990867,
+      "CI_upper": 1.7637045254227592,
+      "confidence_level": 0.95,
+      "interpretation": "inconclusive: CI includes zero"
+    },
+    {
+      "metric": "NASA_temporal_minus_baseline",
+      "observed_temporal_minus_baseline": 872357.54002754,
+      "bootstrap_mean_difference": 886808.2501357701,
+      "CI_lower": 26372.31026559351,
+      "CI_upper": 2412105.364689029,
+      "confidence_level": 0.95,
+      "interpretation": "CI favors baseline"
+    }
+  ],
+  "limitations": [
+    "Bootstrap resamples validation engines, not individual rows.",
+    "Only the existing validation split is analyzed.",
+    "A small number of validation engines yields uncertain intervals.",
+    "Confidence intervals are exploratory and are not a substitute for independent external validation.",
+    "The test set is not used for model selection.",
+    "No model was retrained and no policy was changed."
+  ]
+}

@@ -1,0 +1,5 @@
+strategy,evaluation_slice,n_engines,mean_engine_RMSE,mean_engine_MAE,mean_engine_NASA_score,mean_engine_error,accepted_against_frozen_baseline,gate_decision_reason
+replay_1x,replay_1x_gate,15,29.393036486585142,25.136680370116284,15207.34790270912,4.603958920542396,True,Accepted: mean_engine_RMSE improved 3.71%; mean_engine_MAE improved 2.45%; mean_engine_NASA_score improved 22.23%
+adaptation_2x,adaptation_2x_gate,15,29.4153695601647,25.077931397692836,15987.912371661836,4.504765826880164,True,Accepted: mean_engine_RMSE improved 3.64%; mean_engine_MAE improved 2.68%; mean_engine_NASA_score improved 18.24%
+adaptation_4x,adaptation_4x_gate,15,29.587192476625937,25.179046647131205,15026.05494980776,4.6144900933232975,True,Accepted: mean_engine_RMSE improved 3.08%; mean_engine_MAE improved 2.29%; mean_engine_NASA_score improved 23.15%
+engine_balanced_2x,engine_balanced_2x_gate,15,29.411055058564852,25.14569390419755,14179.715320339665,4.28219130200995,True,Accepted: mean_engine_RMSE improved 3.66%; mean_engine_MAE improved 2.42%; mean_engine_NASA_score improved 27.48%

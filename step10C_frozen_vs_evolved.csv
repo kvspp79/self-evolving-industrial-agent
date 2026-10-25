@@ -1,0 +1,7 @@
+evaluation_unit,metric,frozen_baseline,self_evolved,change_evolved_minus_frozen,relative_change_percent_vs_frozen,interpretation
+all_cycles_rows,RMSE,34.28824931877528,32.74604616703946,-1.5422031517358192,-4.497759968431378,Negative change favours the evolved model; positive change favours the frozen model.
+all_cycles_rows,MAE,25.411457152405838,24.33674667660393,-1.0747104758019077,-4.229235928330694,Negative change favours the evolved model; positive change favours the frozen model.
+all_cycles_rows,NASA_PHM_score_lower_is_better,420525.8239335891,276642.0050440855,-143883.8188895036,-34.21521597499473,Negative change favours the evolved model; positive change favours the frozen model.
+one_final_cycle_per_heldout_engine,RMSE,2.1121640089193927,3.5918424392288224,1.4796784303094297,70.05509155827582,Negative change favours the evolved model; positive change favours the frozen model.
+one_final_cycle_per_heldout_engine,MAE,2.044891317230709,3.3040215621842686,1.2591302449535595,61.57443353315885,Negative change favours the evolved model; positive change favours the frozen model.
+one_final_cycle_per_heldout_engine,NASA_PHM_score_lower_is_better,3.4292796450463037,6.09038967152723,2.6611100264809266,77.59967987227228,Negative change favours the evolved model; positive change favours the frozen model.

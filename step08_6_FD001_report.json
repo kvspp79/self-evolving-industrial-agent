@@ -1,0 +1,163 @@
+{
+  "project": "A Self-Evolving Explainable Rational Agent for Adaptive Industrial Decision Intelligence Using Statistical Trend Learning",
+  "dataset": "NASA C-MAPSS FD001",
+  "step": "8.6",
+  "method": "Frozen-threshold calibrated prediction evaluation",
+  "run_timestamp_utc": "2026-10-25T09:57:24.747198+00:00",
+  "input_file": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_5\\validation_calibrated_predictions_FD001.csv",
+  "validation_snapshots": 4070,
+  "validation_engines": 20,
+  "frozen_thresholds": {
+    "baseline_cycles": 10.0,
+    "temporal_cycles": 5.0
+  },
+  "definitions": {
+    "maintenance_action": "predicted RUL <= frozen threshold",
+    "critical": "actual RUL <= 15.0",
+    "high_risk": "actual RUL <= 30.0",
+    "false_alarm": "maintenance action when actual RUL > 30.0",
+    "high_risk_miss_rate": "missed high-risk snapshots divided by all high-risk snapshots"
+  },
+  "safety_constraints": {
+    "maximum_missed_critical_snapshots": 0,
+    "maximum_high_risk_miss_rate": 0.1,
+    "interpretation": "Exploratory snapshot-level screen, not a validated industrial safety guarantee."
+  },
+  "cost_scenarios": {
+    "standard": {
+      "maintenance_cost": 100.0,
+      "missed_critical_cost": 1000.0,
+      "false_alarm_cost": 50.0
+    },
+    "high_failure_penalty": {
+      "maintenance_cost": 100.0,
+      "missed_critical_cost": 2000.0,
+      "false_alarm_cost": 50.0
+    },
+    "lower_failure_penalty": {
+      "maintenance_cost": 100.0,
+      "missed_critical_cost": 500.0,
+      "false_alarm_cost": 50.0
+    },
+    "high_maintenance_cost": {
+      "maintenance_cost": 250.0,
+      "missed_critical_cost": 1000.0,
+      "false_alarm_cost": 100.0
+    }
+  },
+  "metrics": [
+    {
+      "variant": "baseline_raw_frozen",
+      "threshold_cycles": 10.0,
+      "n_snapshots": 4070,
+      "n_engines": 20,
+      "RMSE": 31.165128250460647,
+      "MAE": 23.658393051671368,
+      "NASA_score": 296684.2437773973,
+      "mean_error_predicted_minus_actual": 4.946874976040521,
+      "maintenance_action_snapshots": 173,
+      "critical_snapshots": 320,
+      "missed_critical_snapshots": 151,
+      "engines_with_any_missed_critical_snapshot": 20,
+      "high_risk_snapshots": 620,
+      "missed_high_risk_snapshots": 447,
+      "engines_with_any_missed_high_risk_snapshot": 20,
+      "high_risk_miss_rate": 0.7209677419354839,
+      "false_alarm_snapshots": 0,
+      "safety_constraint_feasible_snapshot_level": false,
+      "illustrative_snapshot_cost_standard": 168300.0,
+      "illustrative_snapshot_cost_high_failure_penalty": 319300.0,
+      "illustrative_snapshot_cost_lower_failure_penalty": 92800.0,
+      "illustrative_snapshot_cost_high_maintenance_cost": 194250.0
+    },
+    {
+      "variant": "baseline_calibrated_same_threshold",
+      "threshold_cycles": 10.0,
+      "n_snapshots": 4070,
+      "n_engines": 20,
+      "RMSE": 31.04133128060023,
+      "MAE": 23.80854375210894,
+      "NASA_score": 248097.10410730256,
+      "mean_error_predicted_minus_actual": 4.6633469430004535,
+      "maintenance_action_snapshots": 112,
+      "critical_snapshots": 320,
+      "missed_critical_snapshots": 208,
+      "engines_with_any_missed_critical_snapshot": 20,
+      "high_risk_snapshots": 620,
+      "missed_high_risk_snapshots": 508,
+      "engines_with_any_missed_high_risk_snapshot": 20,
+      "high_risk_miss_rate": 0.8193548387096774,
+      "false_alarm_snapshots": 0,
+      "safety_constraint_feasible_snapshot_level": false,
+      "illustrative_snapshot_cost_standard": 219200.0,
+      "illustrative_snapshot_cost_high_failure_penalty": 427200.0,
+      "illustrative_snapshot_cost_lower_failure_penalty": 115200.0,
+      "illustrative_snapshot_cost_high_maintenance_cost": 236000.0
+    },
+    {
+      "variant": "temporal_raw_frozen",
+      "threshold_cycles": 5.0,
+      "n_snapshots": 4070,
+      "n_engines": 20,
+      "RMSE": 32.2147346533254,
+      "MAE": 23.580542650152047,
+      "NASA_score": 1169041.7838049377,
+      "mean_error_predicted_minus_actual": 2.2139888778918313,
+      "maintenance_action_snapshots": 86,
+      "critical_snapshots": 320,
+      "missed_critical_snapshots": 234,
+      "engines_with_any_missed_critical_snapshot": 20,
+      "high_risk_snapshots": 620,
+      "missed_high_risk_snapshots": 534,
+      "engines_with_any_missed_high_risk_snapshot": 20,
+      "high_risk_miss_rate": 0.8612903225806452,
+      "false_alarm_snapshots": 0,
+      "safety_constraint_feasible_snapshot_level": false,
+      "illustrative_snapshot_cost_standard": 242600.0,
+      "illustrative_snapshot_cost_high_failure_penalty": 476600.0,
+      "illustrative_snapshot_cost_lower_failure_penalty": 125600.0,
+      "illustrative_snapshot_cost_high_maintenance_cost": 255500.0
+    },
+    {
+      "variant": "temporal_calibrated_same_threshold",
+      "threshold_cycles": 5.0,
+      "n_snapshots": 4070,
+      "n_engines": 20,
+      "RMSE": 32.347299873114295,
+      "MAE": 24.496745238510126,
+      "NASA_score": 960031.5887923153,
+      "mean_error_predicted_minus_actual": 4.758372737959301,
+      "maintenance_action_snapshots": 0,
+      "critical_snapshots": 320,
+      "missed_critical_snapshots": 320,
+      "engines_with_any_missed_critical_snapshot": 20,
+      "high_risk_snapshots": 620,
+      "missed_high_risk_snapshots": 620,
+      "engines_with_any_missed_high_risk_snapshot": 20,
+      "high_risk_miss_rate": 1.0,
+      "false_alarm_snapshots": 0,
+      "safety_constraint_feasible_snapshot_level": false,
+      "illustrative_snapshot_cost_standard": 320000.0,
+      "illustrative_snapshot_cost_high_failure_penalty": 640000.0,
+      "illustrative_snapshot_cost_lower_failure_penalty": 160000.0,
+      "illustrative_snapshot_cost_high_maintenance_cost": 320000.0
+    }
+  ],
+  "limitations": [
+    "Validation contains 4,070 engine-cycle snapshots from only 20 engines.",
+    "Snapshots from the same engine are dependent observations.",
+    "Snapshot-level costs are not actual operating costs and do not model repeated interventions, repair duration, or maintenance scheduling.",
+    "The same frozen threshold is applied before and after calibration; this isolates the prediction transformation but may not be the optimal threshold for calibrated predictions.",
+    "No threshold is selected using these Step 8.6 results.",
+    "No test labels are read or used.",
+    "No model is retrained.",
+    "No maintenance policy is modified or deployed.",
+    "Results are limited to FD001 and the specified illustrative costs."
+  ],
+  "artifacts": {
+    "metrics_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_6\\step08_6_validation_metrics_FD001.csv",
+    "decisions_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_6\\step08_6_validation_decisions_FD001.csv",
+    "plot": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_6\\step08_6_policy_comparison_FD001.png",
+    "report_json": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent_CMAPSS\\outputs\\step08_6\\step08_6_FD001_report.json"
+  }
+}
