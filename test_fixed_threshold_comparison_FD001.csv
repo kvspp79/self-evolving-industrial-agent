@@ -1,0 +1,3 @@
+model,threshold_cycles,n_engines,maintenance_actions,maintenance_action_rate,actual_critical_engines,actual_high_or_critical_engines,missed_critical_engines,missed_high_or_critical_engines,false_alarm_actions,maintenance_cost,missed_critical_cost,false_alarm_cost,total_simulated_cost,simulated_cost_per_engine,costs_are_illustrative
+baseline,30.0,100,18,0.18,10,25,0,8,1,1800.0,0.0,50.0,1850.0,18.5,True
+temporal,30.0,100,20,0.2,10,25,0,6,1,2000.0,0.0,50.0,2050.0,20.5,True

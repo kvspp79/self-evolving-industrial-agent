@@ -1,0 +1,11 @@
+seed,n_base_engines,n_adaptation_engines,n_gate_engines,n_final_engines,candidate_accepted,all_metrics_within_2_percent,at_least_one_metric_improved_1_percent
+101,55,15,15,15,False,False,False
+202,55,15,15,15,False,False,True
+303,55,15,15,15,False,False,True
+404,55,15,15,15,True,True,True
+505,55,15,15,15,True,True,True
+606,55,15,15,15,True,True,True
+707,55,15,15,15,False,False,False
+808,55,15,15,15,False,False,True
+909,55,15,15,15,False,False,True
+1010,55,15,15,15,True,True,True
