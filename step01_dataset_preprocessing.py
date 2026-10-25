@@ -1,404 +1,176 @@
+
 from pathlib import Path
+import json
 
+import numpy as np
 import pandas as pd
-import matplotlib
-
-matplotlib.use("Agg")
-
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-from sklearn.model_selection import train_test_split
 
 
 # ============================================================
-# STEP 1: AI4I DATASET UNDERSTANDING AND PREPROCESSING
+# STEP 1: NASA C-MAPSS DATA INSPECTION AND PREPROCESSING
+# Initial subset: FD001
 # ============================================================
 
-RANDOM_STATE = 42
-TEST_SIZE = 0.20
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+DATA_DIR = PROJECT_ROOT / "data" / "CMAPSSData"
+OUTPUT_DIR = PROJECT_ROOT / "outputs" / "step01"
 
-# Project folder is one level above src.
-PROJECT_DIR = Path(__file__).resolve().parent.parent
+SUBSET = "FD001"
 
-DATA_PATH = PROJECT_DIR / "data" / "ai4i2020.csv"
-OUTPUT_DIR = PROJECT_DIR / "outputs"
+# C-MAPSS column definitions:
+# 2 identifiers + 3 operating settings + 21 sensor measurements
+COLUMNS = (
+    ["unit_id", "cycle"]
+    + [f"setting_{i}" for i in range(1, 4)]
+    + [f"sensor_{i:02d}" for i in range(1, 22)]
+)
 
-OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-sns.set_theme(style="whitegrid")
+def read_cmapss_file(file_path):
+    """Read a whitespace-separated C-MAPSS text file."""
+    if not file_path.exists():
+        raise FileNotFoundError(
+            f"Required dataset file was not found:\n{file_path}"
+        )
+
+    df = pd.read_csv(
+        file_path,
+        sep=r"\s+",
+        header=None,
+        engine="python",
+    )
+
+    # Some distributed C-MAPSS files contain trailing empty columns.
+    df = df.dropna(axis=1, how="all")
+
+    if df.shape[1] != len(COLUMNS):
+        raise ValueError(
+            f"{file_path.name} has {df.shape[1]} columns; "
+            f"expected {len(COLUMNS)}. "
+            "Check that you are using the original C-MAPSS files."
+        )
+
+    df.columns = COLUMNS
+    return df
 
 
 def main():
+    print("=" * 65)
+    print("NASA C-MAPSS — STEP 1: DATA PREPROCESSING")
+    print(f"Subset: {SUBSET}")
+    print("=" * 65)
 
-    print("=" * 60)
-    print("STEP 1: AI4I DATASET PREPROCESSING")
-    print("=" * 60)
+    train_path = DATA_DIR / f"train_{SUBSET}.txt"
+    test_path = DATA_DIR / f"test_{SUBSET}.txt"
+    rul_path = DATA_DIR / f"RUL_{SUBSET}.txt"
 
-    # --------------------------------------------------------
-    # 1. LOAD DATASET
-    # --------------------------------------------------------
+    # 1. Load the raw files
+    train_df = read_cmapss_file(train_path)
+    test_df = read_cmapss_file(test_path)
 
-    print("\nDataset location:")
-    print(DATA_PATH)
+    if not rul_path.exists():
+        raise FileNotFoundError(f"RUL file not found: {rul_path}")
 
-    if not DATA_PATH.exists():
-        raise FileNotFoundError(
-            "Dataset file was not found. Expected location: "
-            + str(DATA_PATH)
-        )
+    rul_df = pd.read_csv(rul_path, sep=r"\s+", header=None)
+    rul_values = pd.to_numeric(rul_df.iloc[:, 0], errors="raise")
 
-    df = pd.read_csv(DATA_PATH)
-    df.columns = df.columns.str.strip()
-
-    print("\nDataset loaded successfully.")
-    print("Dataset shape:", df.shape)
-
-    print("\nColumn names:")
-    print(df.columns.tolist())
-
-    print("\nFirst five records:")
-    print(df.head().to_string(index=False))
-
-    # --------------------------------------------------------
-    # 2. VALIDATE TARGET COLUMN
-    # --------------------------------------------------------
-
-    target = "Machine failure"
-
-    if target not in df.columns:
+    if len(rul_values) != test_df["unit_id"].nunique():
         raise ValueError(
-            "Machine failure column is missing. Columns found: "
-            + str(df.columns.tolist())
+            "The number of RUL values does not match the number "
+            "of test engines."
         )
 
-    df[target] = pd.to_numeric(df[target], errors="raise")
+    # 2. Basic validation
+    for name, df in [("training", train_df), ("test", test_df)]:
+        if df.isna().any().any():
+            raise ValueError(f"Missing values found in {name} data.")
 
-    if df[target].isna().any():
-        raise ValueError("The target contains missing values.")
+        if (df["cycle"] < 1).any():
+            raise ValueError(f"Invalid cycle numbers found in {name} data.")
 
-    if not set(df[target].unique()).issubset({0, 1}):
-        raise ValueError("The target must contain only 0 and 1.")
+        if df.duplicated(["unit_id", "cycle"]).any():
+            raise ValueError(
+                f"Duplicate unit_id/cycle rows found in {name} data."
+            )
 
-    # --------------------------------------------------------
-    # 3. CHECK DATA QUALITY
-    # --------------------------------------------------------
+    if train_df["unit_id"].nunique() != train_df["unit_id"].max():
+        raise ValueError("Training unit IDs are not the expected 1..N range.")
 
-    print("\n" + "-" * 60)
-    print("DATA QUALITY")
-    print("-" * 60)
+    # 3. Calculate training RUL labels.
+    # Training engines run to their recorded end-of-life cycle.
+    max_cycle = train_df.groupby("unit_id")["cycle"].transform("max")
+    train_df["RUL"] = max_cycle - train_df["cycle"]
 
-    missing = df.isnull().sum()
-
-    print("\nMissing values by column:")
-    print(missing.to_string())
-
-    print("\nTotal missing values:", int(missing.sum()))
-    print("Exact duplicate rows:", int(df.duplicated().sum()))
-
-    # We preserve the original data and do not delete rows
-    # automatically.
-
-    # --------------------------------------------------------
-    # 4. TARGET CLASS DISTRIBUTION
-    # --------------------------------------------------------
-
-    print("\n" + "-" * 60)
-    print("MACHINE FAILURE DISTRIBUTION")
-    print("-" * 60)
-
-    counts = df[target].value_counts().sort_index()
-
-    summary = pd.DataFrame({
-        "Count": counts,
-        "Percentage": (counts / len(df) * 100).round(3)
-    })
-
-    print(summary.to_string())
-
-    failure_rate = df[target].mean() * 100
-    print("\nFailure rate: {:.3f}%".format(failure_rate))
-
-    fig, ax = plt.subplots(figsize=(7, 4))
-
-    sns.countplot(data=df, x=target, ax=ax)
-
-    ax.set_title("AI4I Machine Failure Distribution")
-    ax.set_xlabel("Machine Failure (0 = No, 1 = Yes)")
-    ax.set_ylabel("Number of Records")
-
-    fig.tight_layout()
-    fig.savefig(
-        OUTPUT_DIR / "step01_target_distribution.png",
-        dpi=300
-    )
-    plt.close(fig)
-
-    # --------------------------------------------------------
-    # 5. FAILURE MODE SUMMARY
-    # --------------------------------------------------------
-
-    failure_modes = ["TWF", "HDF", "PWF", "OSF", "RNF"]
-
-    available_modes = [
-        column for column in failure_modes
-        if column in df.columns
-    ]
-
-    if available_modes:
-
-        mode_counts = df[available_modes].sum().sort_values(
-            ascending=False
-        )
-
-        print("\nFailure-mode counts:")
-        print(mode_counts.to_string())
-
-        fig, ax = plt.subplots(figsize=(8, 4))
-
-        mode_counts.plot(kind="bar", ax=ax)
-
-        ax.set_title("AI4I Failure-Mode Counts")
-        ax.set_xlabel("Failure Mode")
-        ax.set_ylabel("Number of Positive Labels")
-
-        fig.tight_layout()
-        fig.savefig(
-            OUTPUT_DIR / "step01_failure_modes.png",
-            dpi=300
-        )
-        plt.close(fig)
-
-    # --------------------------------------------------------
-    # 6. SENSOR STATISTICS AND DISTRIBUTIONS
-    # --------------------------------------------------------
-
-    sensor_candidates = [
-        "Air temperature [K]",
-        "Process temperature [K]",
-        "Rotational speed [rpm]",
-        "Torque [Nm]",
-        "Tool wear [min]"
-    ]
-
-    sensor_cols = [
-        column for column in sensor_candidates
-        if column in df.columns
-    ]
-
-    if sensor_cols:
-
-        print("\nSensor descriptive statistics:")
-        print(df[sensor_cols].describe().round(3).to_string())
-
-        df[sensor_cols].hist(
-            figsize=(12, 8),
-            bins=30,
-            edgecolor="black"
-        )
-
-        plt.suptitle("AI4I Sensor Feature Distributions")
-        plt.tight_layout()
-
-        plt.savefig(
-            OUTPUT_DIR / "step01_sensor_distributions.png",
-            dpi=300
-        )
-
-        plt.close()
-
-    else:
-        print("\nWarning: Expected sensor columns were not found.")
-
-    # --------------------------------------------------------
-    # 7. SENSOR CORRELATION
-    # --------------------------------------------------------
-
-    excluded_from_correlation = [
-        "UDI",
-        "UID",
-        "Product ID",
-        "Machine failure",
-        "TWF",
-        "HDF",
-        "PWF",
-        "OSF",
-        "RNF"
-    ]
-
-    numeric_cols = df.select_dtypes(
-        include="number"
-    ).columns.tolist()
-
-    correlation_cols = [
-        column for column in numeric_cols
-        if column not in excluded_from_correlation
-    ]
-
-    if len(correlation_cols) >= 2:
-
-        correlation = df[correlation_cols].corr()
-
-        fig, ax = plt.subplots(figsize=(10, 7))
-
-        sns.heatmap(
-            correlation,
-            annot=True,
-            fmt=".2f",
-            cmap="coolwarm",
-            center=0,
-            ax=ax
-        )
-
-        ax.set_title("Correlation Between Operating Features")
-
-        fig.tight_layout()
-
-        fig.savefig(
-            OUTPUT_DIR / "step01_sensor_correlation.png",
-            dpi=300
-        )
-
-        plt.close(fig)
-
-    # --------------------------------------------------------
-    # 8. PREPARE INPUT FEATURES
-    # --------------------------------------------------------
-
-    # Exclude failure labels to prevent target leakage.
-    outcome_cols = [
-        "Machine failure",
-        "TWF",
-        "HDF",
-        "PWF",
-        "OSF",
-        "RNF"
-    ]
-
-    # Identifiers are excluded from predictive features.
-    identifier_cols = [
-        "UDI",
-        "UID",
-        "Product ID"
-    ]
-
-    excluded_cols = [
-        column
-        for column in outcome_cols + identifier_cols
-        if column in df.columns
-    ]
-
-    X = df.drop(columns=excluded_cols).copy()
-    y = df[target].astype(int).copy()
-
-    if X.empty:
-        raise ValueError("No input features remain.")
-
-    if X.isnull().any().any():
-        raise ValueError(
-            "Input features contain missing values. "
-            "Investigate them before proceeding."
-        )
-
-    if y.nunique() != 2:
-        raise ValueError("Both target classes must be present.")
-
-    print("\nExcluded columns:")
-    print(excluded_cols)
-
-    print("\nCandidate input features:")
-    print(X.columns.tolist())
-
-    print("\nFeature matrix shape:", X.shape)
-    print("Target vector shape:", y.shape)
-
-    # --------------------------------------------------------
-    # 9. TRAIN / TEST SPLIT
-    # --------------------------------------------------------
-
-    X_train, X_test, y_train, y_test = train_test_split(
-        X,
-        y,
-        test_size=TEST_SIZE,
-        random_state=RANDOM_STATE,
-        stratify=y
+    # 4. Attach provided RUL values to test engines.
+    # The provided value is RUL AFTER each engine's final test cycle.
+    test_last_cycle = test_df.groupby("unit_id")["cycle"].transform("max")
+    test_df["RUL_at_last_test_cycle"] = test_df["unit_id"].map(
+        dict(enumerate(rul_values.tolist(), start=1))
     )
 
-    print("\nTraining feature shape:", X_train.shape)
-    print("Testing feature shape:", X_test.shape)
-
-    print(
-        "Training failure rate: {:.3f}%".format(
-            y_train.mean() * 100
-        )
+    test_df["RUL"] = (
+        test_df["RUL_at_last_test_cycle"]
+        + test_last_cycle
+        - test_df["cycle"]
     )
 
-    print(
-        "Testing failure rate: {:.3f}%".format(
-            y_test.mean() * 100
-        )
+    test_df = test_df.drop(columns=["RUL_at_last_test_cycle"])
+
+    # 5. Save processed datasets without modifying raw files.
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    train_output = OUTPUT_DIR / f"train_{SUBSET}_processed.csv"
+    test_output = OUTPUT_DIR / f"test_{SUBSET}_processed.csv"
+    rul_output = OUTPUT_DIR / f"RUL_{SUBSET}_reference.csv"
+    report_output = OUTPUT_DIR / f"step01_{SUBSET}_report.json"
+
+    train_df.to_csv(train_output, index=False)
+    test_df.to_csv(test_output, index=False)
+
+    pd.DataFrame({
+        "unit_id": range(1, len(rul_values) + 1),
+        "RUL_after_last_test_cycle": rul_values,
+    }).to_csv(rul_output, index=False)
+
+    # 6. Create a compact dataset report.
+    report = {
+        "dataset": "NASA C-MAPSS",
+        "subset": SUBSET,
+        "training_rows": int(len(train_df)),
+        "training_engines": int(train_df["unit_id"].nunique()),
+        "test_rows": int(len(test_df)),
+        "test_engines": int(test_df["unit_id"].nunique()),
+        "number_of_features_before_RUL": 26,
+        "number_of_sensor_features": 21,
+        "training_missing_values": int(train_df.isna().sum().sum()),
+        "test_missing_values": int(test_df.isna().sum().sum()),
+        "training_RUL_min": int(train_df["RUL"].min()),
+        "training_RUL_max": int(train_df["RUL"].max()),
+        "test_RUL_min": int(test_df["RUL"].min()),
+        "test_RUL_max": int(test_df["RUL"].max()),
+        "outputs": [
+            str(train_output.relative_to(PROJECT_ROOT)),
+            str(test_output.relative_to(PROJECT_ROOT)),
+            str(rul_output.relative_to(PROJECT_ROOT)),
+        ],
+    }
+
+    report_output.write_text(
+        json.dumps(report, indent=4),
+        encoding="utf-8",
     )
 
-    # --------------------------------------------------------
-    # 10. SAVE DATA SPLITS
-    # --------------------------------------------------------
-
-    X_train.to_csv(
-        OUTPUT_DIR / "X_train.csv",
-        index=False
-    )
-
-    X_test.to_csv(
-        OUTPUT_DIR / "X_test.csv",
-        index=False
-    )
-
-    y_train.to_frame(name=target).to_csv(
-        OUTPUT_DIR / "y_train.csv",
-        index=False
-    )
-
-    y_test.to_frame(name=target).to_csv(
-        OUTPUT_DIR / "y_test.csv",
-        index=False
-    )
-
-    # --------------------------------------------------------
-    # 11. SAVE STEP 1 REPORT
-    # --------------------------------------------------------
-
-    report_lines = [
-        "AI4I STEP 1 REPORT",
-        "=" * 50,
-        "Dataset rows: " + str(len(df)),
-        "Dataset columns: " + str(len(df.columns)),
-        "Missing values: " + str(int(df.isnull().sum().sum())),
-        "Exact duplicate rows: " + str(int(df.duplicated().sum())),
-        "Failure records: " + str(int(y.sum())),
-        "Non-failure records: " + str(int((y == 0).sum())),
-        "Failure rate: {:.3f}%".format(y.mean() * 100),
-        "Excluded columns: " + str(excluded_cols),
-        "Input features: " + str(X.columns.tolist()),
-        "Training rows: " + str(len(X_train)),
-        "Testing rows: " + str(len(X_test)),
-        "",
-        "Limitation: AI4I is a synthetic benchmark dataset.",
-        "UDI order is not genuine per-machine degradation history."
-    ]
-
-    report_path = OUTPUT_DIR / "step01_report.txt"
-
-    report_path.write_text(
-        "\n".join(report_lines),
-        encoding="utf-8"
-    )
-
-    print("\n" + "=" * 60)
-    print("STEP 1 COMPLETED SUCCESSFULLY")
-    print("=" * 60)
-
-    print("Outputs saved in:", OUTPUT_DIR)
-    print("Report saved as:", report_path.name)
+    # 7. Print summary.
+    print("\nPREPROCESSING SUCCESSFUL")
+    print("-" * 40)
+    print(f"Training rows:       {len(train_df):,}")
+    print(f"Training engines:    {train_df['unit_id'].nunique():,}")
+    print(f"Test rows:           {len(test_df):,}")
+    print(f"Test engines:        {test_df['unit_id'].nunique():,}")
+    print(f"Training RUL range:  {train_df['RUL'].min()} to {train_df['RUL'].max()}")
+    print(f"Test RUL range:      {test_df['RUL'].min()} to {test_df['RUL'].max()}")
+    print(f"\nOutput folder: {OUTPUT_DIR}")
+    print(f"Report: {report_output.name}")
 
 
 if __name__ == "__main__":
