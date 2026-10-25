@@ -1,0 +1,9 @@
+threshold,n_engines,maintenance_actions,missed_critical_engines,missed_high_or_critical_engines,actual_high_or_critical_engines,high_risk_miss_rate,false_alarm_actions,maintenance_cost,missed_critical_cost,false_alarm_cost,total_simulated_cost,cost_per_engine,safety_constraints_satisfied,model,cost_scenario,selection_status,selection_basis,prediction_column
+10.0,20,20,0,0,20,0.0,0,2000.0,0.0,0.0,2000.0,100.0,True,baseline,standard,feasible_lowest_validation_cost,Validation final-cycle engines only; test labels not used.,baseline_prediction
+5.0,20,20,0,0,20,0.0,0,2000.0,0.0,0.0,2000.0,100.0,True,temporal,standard,feasible_lowest_validation_cost,Validation final-cycle engines only; test labels not used.,temporal_prediction
+10.0,20,20,0,0,20,0.0,0,2000.0,0.0,0.0,2000.0,100.0,True,baseline,high_failure_penalty,feasible_lowest_validation_cost,Validation final-cycle engines only; test labels not used.,baseline_prediction
+5.0,20,20,0,0,20,0.0,0,2000.0,0.0,0.0,2000.0,100.0,True,temporal,high_failure_penalty,feasible_lowest_validation_cost,Validation final-cycle engines only; test labels not used.,temporal_prediction
+10.0,20,20,0,0,20,0.0,0,2000.0,0.0,0.0,2000.0,100.0,True,baseline,lower_failure_penalty,feasible_lowest_validation_cost,Validation final-cycle engines only; test labels not used.,baseline_prediction
+5.0,20,20,0,0,20,0.0,0,2000.0,0.0,0.0,2000.0,100.0,True,temporal,lower_failure_penalty,feasible_lowest_validation_cost,Validation final-cycle engines only; test labels not used.,temporal_prediction
+10.0,20,20,0,0,20,0.0,0,5000.0,0.0,0.0,5000.0,250.0,True,baseline,high_maintenance_cost,feasible_lowest_validation_cost,Validation final-cycle engines only; test labels not used.,baseline_prediction
+5.0,20,20,0,0,20,0.0,0,5000.0,0.0,0.0,5000.0,250.0,True,temporal,high_maintenance_cost,feasible_lowest_validation_cost,Validation final-cycle engines only; test labels not used.,temporal_prediction

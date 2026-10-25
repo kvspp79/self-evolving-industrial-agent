@@ -1,0 +1,9 @@
+model,cost_scenario,selected_threshold_mean,selected_threshold_std,maintenance_actions_mean,maintenance_actions_std,missed_critical_engines_mean,missed_critical_engines_std,missed_high_risk_engines_mean,missed_high_risk_engines_std,high_risk_miss_rate_mean,high_risk_miss_rate_std,false_alarm_actions_mean,false_alarm_actions_std,total_simulated_cost_mean,total_simulated_cost_std,cost_per_engine_mean,cost_per_engine_std
+baseline,high_failure_penalty,10.0,0.0,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,400.0,0.0,100.0,0.0
+baseline,high_maintenance_cost,10.0,0.0,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1000.0,0.0,250.0,0.0
+baseline,lower_failure_penalty,10.0,0.0,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,400.0,0.0,100.0,0.0
+baseline,standard,10.0,0.0,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,400.0,0.0,100.0,0.0
+temporal,high_failure_penalty,5.0,0.0,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,400.0,0.0,100.0,0.0
+temporal,high_maintenance_cost,5.0,0.0,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1000.0,0.0,250.0,0.0
+temporal,lower_failure_penalty,5.0,0.0,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,400.0,0.0,100.0,0.0
+temporal,standard,5.0,0.0,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,400.0,0.0,100.0,0.0

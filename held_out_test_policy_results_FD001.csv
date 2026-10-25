@@ -1,0 +1,9 @@
+model,cost_scenario,threshold_cycles,n_engines,actual_critical_engines,actual_high_or_critical_engines,maintenance_actions,maintenance_action_rate,missed_critical_engines,missed_high_or_critical_engines,high_risk_miss_rate,false_alarm_actions,maintenance_cost,missed_critical_cost,false_alarm_cost,total_simulated_cost,simulated_cost_per_engine,safety_constraints_satisfied,selection_status,validation_safety_feasible
+baseline,standard,10.0,100,10,25,4,0.04,6,21,0.84,0,400.0,6000.0,0.0,6400.0,64.0,False,feasible_lowest_cost,True
+baseline,high_failure_penalty,10.0,100,10,25,4,0.04,6,21,0.84,0,400.0,12000.0,0.0,12400.0,124.0,False,feasible_lowest_cost,True
+baseline,lower_failure_penalty,10.0,100,10,25,4,0.04,6,21,0.84,0,400.0,3000.0,0.0,3400.0,34.0,False,feasible_lowest_cost,True
+baseline,high_maintenance_cost,10.0,100,10,25,4,0.04,6,21,0.84,0,1000.0,6000.0,0.0,7000.0,70.0,False,feasible_lowest_cost,True
+temporal,standard,5.0,100,10,25,0,0.0,10,25,1.0,0,0.0,10000.0,0.0,10000.0,100.0,False,feasible_lowest_cost,True
+temporal,high_failure_penalty,5.0,100,10,25,0,0.0,10,25,1.0,0,0.0,20000.0,0.0,20000.0,200.0,False,feasible_lowest_cost,True
+temporal,lower_failure_penalty,5.0,100,10,25,0,0.0,10,25,1.0,0,0.0,5000.0,0.0,5000.0,50.0,False,feasible_lowest_cost,True
+temporal,high_maintenance_cost,5.0,100,10,25,0,0.0,10,25,1.0,0,0.0,10000.0,0.0,10000.0,100.0,False,feasible_lowest_cost,True

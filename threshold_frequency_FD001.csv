@@ -1,0 +1,9 @@
+model,cost_scenario,selected_threshold,fold_count
+baseline,high_failure_penalty,10.0,5
+baseline,high_maintenance_cost,10.0,5
+baseline,lower_failure_penalty,10.0,5
+baseline,standard,10.0,5
+temporal,high_failure_penalty,5.0,5
+temporal,high_maintenance_cost,5.0,5
+temporal,lower_failure_penalty,5.0,5
+temporal,standard,5.0,5

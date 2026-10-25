@@ -1,0 +1,9 @@
+model,cost_scenario,folds,feasible_training_folds,fraction_feasible_training_folds
+baseline,high_failure_penalty,5,5,1.0
+baseline,high_maintenance_cost,5,5,1.0
+baseline,lower_failure_penalty,5,5,1.0
+baseline,standard,5,5,1.0
+temporal,high_failure_penalty,5,5,1.0
+temporal,high_maintenance_cost,5,5,1.0
+temporal,lower_failure_penalty,5,5,1.0
+temporal,standard,5,5,1.0

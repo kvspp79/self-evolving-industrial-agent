@@ -1,0 +1,2 @@
+update_index,timestamp_utc,previous_policy,selected_model,selected_prediction_column,selected_threshold,cost_scenario,selection_status,trigger,decision_rule,data_used,test_labels_used_for_selection
+1,2026-10-25T09:54:16.901013+00:00,initial_unselected_policy,temporal,temporal_prediction,5.0,standard,feasible_lowest_validation_cost,initial_validation_policy_selection,"Minimize validation simulated cost among safety-feasible model-threshold pairs; if none are feasible, apply the documented safety-priority fallback.",validation final-cycle engines only,False
