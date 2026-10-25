@@ -1,0 +1,11 @@
+Policy,Rows,Total_Simulated_Cost,Mean_Simulated_Cost_Per_Row
+Higher_Thresholds,2000,30170.0,15.085
+Initial_Step6,2000,32910.0,16.455
+Feedback_Learning_Agent,2000,34430.0,17.215
+Maintenance_Focused,2000,37940.0,18.97
+Conservative,2000,42080.0,21.04
+Lower_Thresholds,2000,47120.0,23.56
+Always_Normal,2000,68000.0,34.0
+Always_Monitor,2000,79440.0,39.72
+Always_Schedule_Maintenance,2000,171560.0,85.78
+Always_Critical,2000,393200.0,196.6

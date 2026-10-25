@@ -1,0 +1,6 @@
+Feature,Spearman_Rho,P_Value_If_SciPy_Available,Absolute_Rho,Interpretation
+Torque [Nm],0.16941349039555567,2.812399870057469e-65,0.16941349039555567,Descriptive association; not causal evidence
+Rotational speed [rpm],-0.16718752384900482,1.3454887501677299e-63,0.16718752384900482,Descriptive association; not causal evidence
+Tool wear [min],0.10162970317973681,2.241312246602044e-24,0.10162970317973681,Descriptive association; not causal evidence
+Air temperature [K],0.08322330146628734,7.700666676816003e-17,0.08322330146628734,Descriptive association; not causal evidence
+Process temperature [K],0.039946000157371285,6.450463217869103e-05,0.039946000157371285,Descriptive association; not causal evidence

@@ -1,0 +1,65 @@
+{
+    "step": 3,
+    "project": "A Self-Evolving Explainable Rational Agent for Adaptive Industrial Decision Intelligence Using Statistical Trend Learning",
+    "dataset": "AI4I 2020 Predictive Maintenance",
+    "scikit_learn_version": "1.8.0",
+    "calibration_methods_attempted": [
+        "sigmoid",
+        "isotonic"
+    ],
+    "calibration_folds": 5,
+    "decision_threshold": 0.5,
+    "number_of_bins_for_ece": 10,
+    "training_rows": 8000,
+    "testing_rows": 2000,
+    "test_failure_count": 68,
+    "test_failure_rate": 0.034,
+    "metrics": [
+        {
+            "Model": "Original XGBoost",
+            "Threshold": 0.5,
+            "Accuracy": 0.969,
+            "Precision": 0.5277777777777778,
+            "Recall": 0.8382352941176471,
+            "F1": 0.6477272727272727,
+            "ROC_AUC": 0.9709003166483985,
+            "PR_AUC_Average_Precision": 0.8147087441784051,
+            "Brier_Score": 0.024071429098722667,
+            "Log_Loss": 0.08450538021632292,
+            "ECE_10_Bins": 0.037305787474513644,
+            "Predicted_Failures": 108
+        },
+        {
+            "Model": "Sigmoid calibration",
+            "Threshold": 0.5,
+            "Accuracy": 0.9865,
+            "Precision": 0.847457627118644,
+            "Recall": 0.7352941176470589,
+            "F1": 0.7874015748031497,
+            "ROC_AUC": 0.9721181951041287,
+            "PR_AUC_Average_Precision": 0.8186019815507992,
+            "Brier_Score": 0.012459726027505506,
+            "Log_Loss": 0.05195083591119006,
+            "ECE_10_Bins": 0.007517909702510103,
+            "Predicted_Failures": 59
+        },
+        {
+            "Model": "Isotonic calibration",
+            "Threshold": 0.5,
+            "Accuracy": 0.9855,
+            "Precision": 0.8823529411764706,
+            "Recall": 0.6617647058823529,
+            "F1": 0.7563025210084033,
+            "ROC_AUC": 0.9680497198879552,
+            "PR_AUC_Average_Precision": 0.8198361377911931,
+            "Brier_Score": 0.011725227186253524,
+            "Log_Loss": 0.06247212217640299,
+            "ECE_10_Bins": 0.004868970811969483,
+            "Predicted_Failures": 51
+        }
+    ],
+    "lowest_test_brier_score_model": "Isotonic calibration",
+    "lowest_test_brier_score": 0.011725227186253524,
+    "calibration_errors": {},
+    "interpretation_note": "Calibration models were fitted using training data with cross-validation. The held-out test set was used for evaluation only. The lowest test Brier score is descriptive and must not be used to repeatedly tune methods against this same test set. ECE depends on the chosen binning scheme. Calibration quality should be interpreted alongside discrimination and decision costs."
+}

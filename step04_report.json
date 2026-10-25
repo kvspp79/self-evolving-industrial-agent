@@ -1,0 +1,71 @@
+{
+    "step": 4,
+    "method": "SHAP TreeExplainer",
+    "dataset": "AI4I 2020 Predictive Maintenance",
+    "model_path": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent\\outputs\\models\\XGBoost.joblib",
+    "background_rows_sampled": 100,
+    "explained_test_rows": 2000,
+    "transformed_feature_count": 8,
+    "highest_risk_test_row_position": 1225,
+    "highest_risk_predicted_failure_probability": 0.9987145662307739,
+    "actual_failure_for_highest_risk_example": 1,
+    "top_10_global_features": [
+        {
+            "Rank": 1,
+            "Safe_Feature": "feature_03",
+            "Feature": "numeric__Torque [Nm]",
+            "Mean_Absolute_SHAP": 1.9706916809082031
+        },
+        {
+            "Rank": 2,
+            "Safe_Feature": "feature_04",
+            "Feature": "numeric__Tool wear [min]",
+            "Mean_Absolute_SHAP": 1.6997740268707275
+        },
+        {
+            "Rank": 3,
+            "Safe_Feature": "feature_02",
+            "Feature": "numeric__Rotational speed [rpm]",
+            "Mean_Absolute_SHAP": 1.1961960792541504
+        },
+        {
+            "Rank": 4,
+            "Safe_Feature": "feature_00",
+            "Feature": "numeric__Air temperature [K]",
+            "Mean_Absolute_SHAP": 0.9706665873527527
+        },
+        {
+            "Rank": 5,
+            "Safe_Feature": "feature_01",
+            "Feature": "numeric__Process temperature [K]",
+            "Mean_Absolute_SHAP": 0.46056172251701355
+        },
+        {
+            "Rank": 6,
+            "Safe_Feature": "feature_07",
+            "Feature": "categorical__Type_M",
+            "Mean_Absolute_SHAP": 0.07827354967594147
+        },
+        {
+            "Rank": 7,
+            "Safe_Feature": "feature_06",
+            "Feature": "categorical__Type_L",
+            "Mean_Absolute_SHAP": 0.04907311126589775
+        },
+        {
+            "Rank": 8,
+            "Safe_Feature": "feature_05",
+            "Feature": "categorical__Type_H",
+            "Mean_Absolute_SHAP": 0.038329895585775375
+        }
+    ],
+    "interpretation_notes": [
+        "Global importance is the mean absolute SHAP value.",
+        "Positive SHAP values push the raw model output higher; negative values push it lower.",
+        "Raw-output SHAP values are not percentage-point changes in failure probability.",
+        "One-hot encoded Type categories may appear as separate features.",
+        "SHAP explains model behavior and does not establish causation.",
+        "The local example is the highest predicted-risk row among the explained test rows.",
+        "The background sample is selected from training data. Tree-path-dependent SHAP uses the model's learned tree paths as its reference mechanism."
+    ]
+}

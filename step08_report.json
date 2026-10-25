@@ -1,0 +1,86 @@
+{
+  "total_rows": 2000,
+  "total_batches": 20,
+  "total_simulated_cost": 34430.0,
+  "mean_simulated_cost_per_row": 17.215,
+  "actual_failures": 68,
+  "actual_failure_rate": 0.034,
+  "epsilon": 0.15,
+  "batch_size": 100,
+  "random_seed": 42,
+  "candidate_policies": {
+    "Conservative": [
+      0.01,
+      0.04,
+      0.12
+    ],
+    "Initial_Step6": [
+      0.02,
+      0.08,
+      0.2
+    ],
+    "Lower_Thresholds": [
+      0.005,
+      0.03,
+      0.1
+    ],
+    "Higher_Thresholds": [
+      0.04,
+      0.12,
+      0.3
+    ],
+    "Maintenance_Focused": [
+      0.01,
+      0.06,
+      0.15
+    ]
+  },
+  "policy_selection_counts": {
+    "Initial_Step6": 1500,
+    "Maintenance_Focused": 200,
+    "Lower_Thresholds": 100,
+    "Higher_Thresholds": 100,
+    "Conservative": 100
+  },
+  "historical_mean_cost_by_policy": {
+    "Conservative": 42.5,
+    "Initial_Step6": 14.086666666666666,
+    "Lower_Thresholds": 30.8,
+    "Higher_Thresholds": 30.5,
+    "Maintenance_Focused": 14.600000000000001
+  },
+  "feedback_update_counts": {
+    "Conservative": 1,
+    "Initial_Step6": 15,
+    "Lower_Thresholds": 1,
+    "Higher_Thresholds": 1,
+    "Maintenance_Focused": 2
+  },
+  "cost_model": {
+    "Normal": {
+      "failure_cost": 1000.0,
+      "no_failure_cost": 0.0
+    },
+    "Monitor": {
+      "failure_cost": 600.0,
+      "no_failure_cost": 20.0
+    },
+    "Schedule Maintenance": {
+      "failure_cost": 250.0,
+      "no_failure_cost": 80.0
+    },
+    "Critical": {
+      "failure_cost": 100.0,
+      "no_failure_cost": 200.0
+    }
+  },
+  "limitations": [
+    "All cost values are illustrative simulated assumptions.",
+    "AI4I does not contain actual maintenance intervention feedback.",
+    "AI4I rows are not chronological machine histories.",
+    "The randomized batch stream is a simulation of sequential feedback.",
+    "The policy selector learns among predefined candidate policies.",
+    "This is not an unconstrained policy generator or proof of real-world deployment.",
+    "The evaluation uses a held-out test prediction file; further independent evaluation is needed before making generalization claims."
+  ]
+}

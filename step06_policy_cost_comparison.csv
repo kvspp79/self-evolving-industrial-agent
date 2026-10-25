@@ -1,0 +1,6 @@
+Policy,Action,Total_Simulated_Cost,Mean_Simulated_Cost_Per_Row,Rows
+Always Normal,Normal,68000.0,34.0,2000
+Always Monitor,Monitor,79440.0,39.72,2000
+Always Schedule,Schedule Maintenance,171560.0,85.78,2000
+Always Critical,Critical,393200.0,196.6,2000
+Probability-Based Agent,Probability thresholds,32910.0,16.455,2000

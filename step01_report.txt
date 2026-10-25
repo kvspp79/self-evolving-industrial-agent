@@ -1,0 +1,16 @@
+AI4I STEP 1 REPORT
+==================================================
+Dataset rows: 10000
+Dataset columns: 14
+Missing values: 0
+Exact duplicate rows: 0
+Failure records: 339
+Non-failure records: 9661
+Failure rate: 3.390%
+Excluded columns: ['Machine failure', 'TWF', 'HDF', 'PWF', 'OSF', 'RNF', 'UDI', 'Product ID']
+Input features: ['Type', 'Air temperature [K]', 'Process temperature [K]', 'Rotational speed [rpm]', 'Torque [Nm]', 'Tool wear [min]']
+Training rows: 8000
+Testing rows: 2000
+
+Limitation: AI4I is a synthetic benchmark dataset.
+UDI order is not genuine per-machine degradation history.

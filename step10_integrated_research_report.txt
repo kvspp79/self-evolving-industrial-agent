@@ -1,0 +1,82 @@
+============================================================================
+FINAL INTEGRATED RESEARCH REPORT
+============================================================================
+
+A Self-Evolving Explainable Rational Agent for Adaptive Industrial Decision Intelligence Using Statistical Trend Learning
+
+Generated: 2026-10-24T14:50:45
+Python version: 3.13.12
+
+1. PROJECT OUTPUT INVENTORY
+----------------------------------------------------------------------------
+Output files found: 61
+Model files found: 6
+
+Model files:
+  - Logistic_Regression.joblib
+  - step05_all_six_features.joblib
+  - step05_torque_and_tool_wear.joblib
+  - XGBoost.joblib
+  - XGBoost_isotonic_calibrated.joblib
+  - XGBoost_sigmoid_calibrated.joblib
+
+2. EXPERIMENT OUTPUT AVAILABILITY
+----------------------------------------------------------------------------
+step02_model_metrics: available; 2 rows
+step03_calibration_metrics: available; 3 rows
+step04_shap_feature_importance: available; 8 rows
+step05_two_feature_comparison: available; 2 rows
+step06_policy_cost_comparison: available; 5 rows
+step06_action_summary: available; 4 rows
+step07_sensor_associations: available; 5 rows
+step07_failure_risk_by_type: available; 3 rows
+step07_sensor_condition_risk: available; 50 rows
+step08_policy_cost_comparison: available; 10 rows
+step08_policy_selection_counts: unavailable
+step09_fixed_policy_baselines: available; 9 rows
+step09_robustness_summary: available; 5 rows
+step09_online_episode_summary: available; 30 rows
+
+3. PREVIOUS STEP REPORTS
+step01_report: not found
+step02_report: available
+step03_report: available
+step04_report: available
+step05_report: available
+step06_report: available
+step07_report: available
+step08_report: available
+step09_report: available
+
+4. FINAL GRAPHS
+----------------------------------------------------------------------------
+step10_model_performance.png | source: step02_model_metrics.csv | metric: ROC_AUC
+step10_calibration_comparison.png | source: step03_calibration_metrics.csv | metric: Brier_Score
+step10_shap_importance.png | source: step04_shap_feature_importance.csv | metric: Mean_Absolute_SHAP
+step10_feature_experiment.png | source: step05_two_feature_comparison.csv | metric: ROC_AUC
+step10_step06_policy_cost.png | source: step06_policy_cost_comparison.csv | metric: Total_Simulated_Cost
+step10_sensor_associations.png | source: step07_sensor_associations.csv | metric: Spearman_Rho
+step10_fixed_policy_cost.png | source: step09_fixed_policy_baselines.csv | metric: mean_cost_per_row
+step10_robustness.png | source: step09_robustness_summary.csv | metric: mean_cost_per_row
+
+5. SCIENTIFIC INTERPRETATION
+----------------------------------------------------------------------------
+The project combines failure prediction, probability calibration, SHAP-based explanation, statistical condition-risk analysis, decision policies, and simulated feedback-driven policy selection.
+The strength of each conclusion depends on the corresponding experiment, evaluation split, metric definition, and source data. The existence of an output file alone is not proof of model quality or agent effectiveness.
+
+6. LIMITATIONS
+----------------------------------------------------------------------------
+- The report integrates existing experiment outputs; it does not retrain the models.
+- The AI4I 2020 dataset does not provide true chronological histories for individual machines.
+- Statistical associations between operating conditions and failure are not proof of causation.
+- Cost results use simulated assumptions, not measured industrial operating expenses.
+- The online selector chooses among predefined policies. This does not establish unrestricted autonomous learning.
+- Lower observed cost alone does not establish statistical significance or real-world savings.
+- Graph metrics are selected from existing table columns. Interpret each graph using its source table and metric.
+
+7. OUTPUT LOCATION
+C:\Users\kvspp\Downloads\Self_Evolving_Industrial_Agent\outputs\step10_final
+
+============================================================================
+END OF REPORT
+============================================================================

@@ -1,0 +1,6 @@
+policy,mean_total_cost,std_total_cost,min_total_cost,max_total_cost,mean_cost_per_row,std_cost_per_row,mean_missed_failures,mean_maintenance_actions,mean_critical_actions
+Conservative,25500.0,0.0,25500.0,25500.0,12.75,0.0,4.0,36.0,96.0
+Higher_Thresholds,28590.0,0.0,28590.0,28590.0,14.294999999999998,0.0,4.0,34.0,112.0
+Initial_Step6,32910.0,0.0,32910.0,32910.0,16.455,0.0,4.0,67.0,132.0
+Lower_Thresholds,38540.0,0.0,38540.0,38540.0,19.27,0.0,4.0,90.0,146.0
+Maintenance_Focused,42080.0,0.0,42080.0,42080.0,21.04,0.0,4.0,89.0,166.0

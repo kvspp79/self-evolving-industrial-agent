@@ -1,0 +1,106 @@
+{
+    "step": 9,
+    "title": "Cost and Robustness Evaluation",
+    "input_file": "outputs\\step05_two_feature_test_predictions.csv",
+    "actual_label_column": "Actual_Failure",
+    "probability_column": "All_Features_Probability",
+    "valid_rows": 2000,
+    "actual_failures": 68,
+    "failure_rate": 0.034,
+    "random_seeds": [
+        11,
+        23,
+        42,
+        57,
+        81,
+        101,
+        202,
+        303,
+        404,
+        505
+    ],
+    "batch_sizes": [
+        50,
+        100,
+        200
+    ],
+    "epsilon": 0.15,
+    "policies": {
+        "Initial_Step6": [
+            0.02,
+            0.08,
+            0.2
+        ],
+        "Higher_Thresholds": [
+            0.05,
+            0.15,
+            0.3
+        ],
+        "Lower_Thresholds": [
+            0.01,
+            0.05,
+            0.15
+        ],
+        "Maintenance_Focused": [
+            0.01,
+            0.04,
+            0.12
+        ],
+        "Conservative": [
+            0.08,
+            0.2,
+            0.4
+        ]
+    },
+    "simulated_cost_matrix": {
+        "Normal": {
+            "failure": 1000.0,
+            "nonfailure": 0.0
+        },
+        "Monitor": {
+            "failure": 600.0,
+            "nonfailure": 20.0
+        },
+        "Schedule Maintenance": {
+            "failure": 250.0,
+            "nonfailure": 80.0
+        },
+        "Critical": {
+            "failure": 100.0,
+            "nonfailure": 200.0
+        }
+    },
+    "best_fixed_policy_by_observed_mean_cost": "Conservative",
+    "best_fixed_policy_mean_cost_per_row": 12.75,
+    "online_batch_size_summary": [
+        {
+            "batch_size": 50,
+            "mean": 14.751,
+            "std": 0.8202635077962581,
+            "min": 13.37,
+            "max": 16.11
+        },
+        {
+            "batch_size": 100,
+            "mean": 14.9385,
+            "std": 1.7298459308402132,
+            "min": 12.96,
+            "max": 17.365
+        },
+        {
+            "batch_size": 200,
+            "mean": 16.4945,
+            "std": 3.170292178963952,
+            "min": 12.985,
+            "max": 21.04
+        }
+    ],
+    "interpretation_limitations": [
+        "Costs are simulated assumptions, not measured industrial costs.",
+        "The AI4I dataset does not provide chronological histories for individual machines.",
+        "Repeated episodes shuffle the available test rows and measure sensitivity to row order, not real temporal drift.",
+        "The online selector chooses among predefined policies.",
+        "The best observed cost does not establish statistical significance or real-world savings.",
+        "For a valid Step 8 comparison, use the same cost matrix, policy thresholds, and evaluation rows."
+    ]
+}

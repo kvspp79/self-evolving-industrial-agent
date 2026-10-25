@@ -1,0 +1,9 @@
+Safe_Feature,Original_Feature
+feature_00,numeric__Air temperature [K]
+feature_01,numeric__Process temperature [K]
+feature_02,numeric__Rotational speed [rpm]
+feature_03,numeric__Torque [Nm]
+feature_04,numeric__Tool wear [min]
+feature_05,categorical__Type_H
+feature_06,categorical__Type_L
+feature_07,categorical__Type_M

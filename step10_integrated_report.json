@@ -1,0 +1,1051 @@
+{
+    "project_title": "A Self-Evolving Explainable Rational Agent for Adaptive Industrial Decision Intelligence Using Statistical Trend Learning",
+    "step": 10,
+    "generated_at": "2026-10-24T14:50:45",
+    "python_version": "3.13.12",
+    "project_root": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent",
+    "inventory": {
+        "output_files": [
+            "step01_failure_modes.png",
+            "step01_report.txt",
+            "step01_sensor_correlation.png",
+            "step01_sensor_distributions.png",
+            "step01_target_distribution.png",
+            "step02_model_metrics.csv",
+            "step02_precision_recall_curves.png",
+            "step02_report.json",
+            "step02_roc_curves.png",
+            "step02_test_predictions.csv",
+            "step03_brier_score_comparison.png",
+            "step03_calibrated_probabilities.csv",
+            "step03_calibration_curves.png",
+            "step03_calibration_metrics.csv",
+            "step03_report.json",
+            "step04_feature_name_mapping.csv",
+            "step04_report.json",
+            "step04_shap_feature_importance.csv",
+            "step04_shap_highest_risk_example.csv",
+            "step04_shap_importance_bar.png",
+            "step04_shap_local_explanation.png",
+            "step04_shap_summary.png",
+            "step04_shap_values.csv",
+            "step05_report.json",
+            "step05_two_feature_comparison.csv",
+            "step05_two_feature_comparison.png",
+            "step05_two_feature_test_predictions.csv",
+            "step06_action_distribution.png",
+            "step06_action_summary.csv",
+            "step06_agent_decisions.csv",
+            "step06_policy_cost_comparison.csv",
+            "step06_report.json",
+            "step07_failure_risk_by_type.csv",
+            "step07_low_high_risk_contrasts.csv",
+            "step07_report.json",
+            "step07_sensor_associations.csv",
+            "step07_sensor_condition_risk.csv",
+            "step07_sensor_condition_risk.png",
+            "step07_torque_toolwear_heatmap.png",
+            "step07_torque_toolwear_risk_grid.csv",
+            "step08_batch_feedback.csv",
+            "step08_online_agent_decisions.csv",
+            "step08_online_learning_curve.png",
+            "step08_policy_cost_comparison.csv",
+            "step08_policy_cost_comparison.png",
+            "step08_policy_learning_history.csv",
+            "step08_policy_selection_counts.png",
+            "step08_report.json",
+            "step09_fixed_policy_baselines.csv",
+            "step09_fixed_policy_costs.png",
+            "step09_online_batch_feedback.csv",
+            "step09_online_cost_variability.png",
+            "step09_online_decisions.csv",
+            "step09_online_episode_summary.csv",
+            "step09_repeated_episode_results.csv",
+            "step09_report.json",
+            "step09_robustness_summary.csv",
+            "X_test.csv",
+            "X_train.csv",
+            "y_test.csv",
+            "y_train.csv"
+        ],
+        "model_files": [
+            "Logistic_Regression.joblib",
+            "step05_all_six_features.joblib",
+            "step05_torque_and_tool_wear.joblib",
+            "XGBoost.joblib",
+            "XGBoost_isotonic_calibrated.joblib",
+            "XGBoost_sigmoid_calibrated.joblib"
+        ],
+        "output_file_count": 61,
+        "model_file_count": 6
+    },
+    "integrated_tables": {
+        "step02_model_metrics": {
+            "source_file": "step02_model_metrics.csv",
+            "summary": {
+                "available": true,
+                "rows": 2,
+                "columns": [
+                    "Model",
+                    "Threshold",
+                    "Accuracy",
+                    "Precision",
+                    "Recall",
+                    "F1",
+                    "ROC_AUC",
+                    "PR_AUC_Average_Precision",
+                    "Brier_Score",
+                    "TN",
+                    "FP",
+                    "FN",
+                    "TP"
+                ]
+            },
+            "preview": [
+                {
+                    "Model": "Logistic_Regression",
+                    "Threshold": 0.5,
+                    "Accuracy": 0.8245,
+                    "Precision": 0.1417721518987341,
+                    "Recall": 0.8235294117647058,
+                    "F1": 0.2419006479481641,
+                    "ROC_AUC": 0.9069540859822188,
+                    "PR_AUC_Average_Precision": 0.3817619661056077,
+                    "Brier_Score": 0.1220750622296351,
+                    "TN": 1593,
+                    "FP": 339,
+                    "FN": 12,
+                    "TP": 56
+                },
+                {
+                    "Model": "XGBoost",
+                    "Threshold": 0.5,
+                    "Accuracy": 0.969,
+                    "Precision": 0.5277777777777778,
+                    "Recall": 0.8382352941176471,
+                    "F1": 0.6477272727272727,
+                    "ROC_AUC": 0.9709003166483984,
+                    "PR_AUC_Average_Precision": 0.8147087441784051,
+                    "Brier_Score": 0.0240714307874441,
+                    "TN": 1881,
+                    "FP": 51,
+                    "FN": 11,
+                    "TP": 57
+                }
+            ]
+        },
+        "step03_calibration_metrics": {
+            "source_file": "step03_calibration_metrics.csv",
+            "summary": {
+                "available": true,
+                "rows": 3,
+                "columns": [
+                    "Model",
+                    "Threshold",
+                    "Accuracy",
+                    "Precision",
+                    "Recall",
+                    "F1",
+                    "ROC_AUC",
+                    "PR_AUC_Average_Precision",
+                    "Brier_Score",
+                    "Log_Loss",
+                    "ECE_10_Bins",
+                    "Predicted_Failures"
+                ]
+            },
+            "preview": [
+                {
+                    "Model": "Original XGBoost",
+                    "Threshold": 0.5,
+                    "Accuracy": 0.969,
+                    "Precision": 0.5277777777777778,
+                    "Recall": 0.8382352941176471,
+                    "F1": 0.6477272727272727,
+                    "ROC_AUC": 0.9709003166483984,
+                    "PR_AUC_Average_Precision": 0.8147087441784051,
+                    "Brier_Score": 0.0240714290987226,
+                    "Log_Loss": 0.0845053802163229,
+                    "ECE_10_Bins": 0.0373057874745136,
+                    "Predicted_Failures": 108
+                },
+                {
+                    "Model": "Sigmoid calibration",
+                    "Threshold": 0.5,
+                    "Accuracy": 0.9865,
+                    "Precision": 0.847457627118644,
+                    "Recall": 0.7352941176470589,
+                    "F1": 0.7874015748031497,
+                    "ROC_AUC": 0.9721181951041288,
+                    "PR_AUC_Average_Precision": 0.8186019815507992,
+                    "Brier_Score": 0.0124597260275055,
+                    "Log_Loss": 0.05195083591119,
+                    "ECE_10_Bins": 0.0075179097025101,
+                    "Predicted_Failures": 59
+                },
+                {
+                    "Model": "Isotonic calibration",
+                    "Threshold": 0.5,
+                    "Accuracy": 0.9855,
+                    "Precision": 0.8823529411764706,
+                    "Recall": 0.6617647058823529,
+                    "F1": 0.7563025210084033,
+                    "ROC_AUC": 0.9680497198879552,
+                    "PR_AUC_Average_Precision": 0.8198361377911931,
+                    "Brier_Score": 0.0117252271862535,
+                    "Log_Loss": 0.0624721221764029,
+                    "ECE_10_Bins": 0.0048689708119694,
+                    "Predicted_Failures": 51
+                }
+            ]
+        },
+        "step04_shap_feature_importance": {
+            "source_file": "step04_shap_feature_importance.csv",
+            "summary": {
+                "available": true,
+                "rows": 8,
+                "columns": [
+                    "Rank",
+                    "Safe_Feature",
+                    "Feature",
+                    "Mean_Absolute_SHAP"
+                ]
+            },
+            "preview": [
+                {
+                    "Rank": 1,
+                    "Safe_Feature": "feature_03",
+                    "Feature": "numeric__Torque [Nm]",
+                    "Mean_Absolute_SHAP": 1.9706917
+                },
+                {
+                    "Rank": 2,
+                    "Safe_Feature": "feature_04",
+                    "Feature": "numeric__Tool wear [min]",
+                    "Mean_Absolute_SHAP": 1.699774
+                },
+                {
+                    "Rank": 3,
+                    "Safe_Feature": "feature_02",
+                    "Feature": "numeric__Rotational speed [rpm]",
+                    "Mean_Absolute_SHAP": 1.1961961
+                },
+                {
+                    "Rank": 4,
+                    "Safe_Feature": "feature_00",
+                    "Feature": "numeric__Air temperature [K]",
+                    "Mean_Absolute_SHAP": 0.9706666
+                },
+                {
+                    "Rank": 5,
+                    "Safe_Feature": "feature_01",
+                    "Feature": "numeric__Process temperature [K]",
+                    "Mean_Absolute_SHAP": 0.46056172
+                }
+            ]
+        },
+        "step05_two_feature_comparison": {
+            "source_file": "step05_two_feature_comparison.csv",
+            "summary": {
+                "available": true,
+                "rows": 2,
+                "columns": [
+                    "Model",
+                    "Feature_Count",
+                    "Features",
+                    "Threshold",
+                    "Accuracy",
+                    "Precision",
+                    "Recall",
+                    "F1",
+                    "ROC_AUC",
+                    "PR_AUC_Average_Precision",
+                    "Brier_Score",
+                    "TN",
+                    "FP",
+                    "FN",
+                    "TP",
+                    "Predicted_Failures",
+                    "Actual_Failures"
+                ]
+            },
+            "preview": [
+                {
+                    "Model": "All Six Features",
+                    "Feature_Count": 6,
+                    "Features": "Type, Air temperature [K], Process temperature [K], Rotational speed [rpm], Torque [Nm], Tool wear [min]",
+                    "Threshold": 0.5,
+                    "Accuracy": 0.977,
+                    "Precision": 0.627906976744186,
+                    "Recall": 0.7941176470588235,
+                    "F1": 0.7012987012987013,
+                    "ROC_AUC": 0.9703827183047132,
+                    "PR_AUC_Average_Precision": 0.8363495359682639,
+                    "Brier_Score": 0.0169257167726755,
+                    "TN": 1900,
+                    "FP": 32,
+                    "FN": 14,
+                    "TP": 54,
+                    "Predicted_Failures": 86,
+                    "Actual_Failures": 68
+                },
+                {
+                    "Model": "Torque and Tool Wear",
+                    "Feature_Count": 2,
+                    "Features": "Torque [Nm], Tool wear [min]",
+                    "Threshold": 0.5,
+                    "Accuracy": 0.8895,
+                    "Precision": 0.1902834008097166,
+                    "Recall": 0.6911764705882353,
+                    "F1": 0.2984126984126984,
+                    "ROC_AUC": 0.8660638168310802,
+                    "PR_AUC_Average_Precision": 0.3712991134391988,
+                    "Brier_Score": 0.0814726576209068,
+                    "TN": 1732,
+                    "FP": 200,
+                    "FN": 21,
+                    "TP": 47,
+                    "Predicted_Failures": 247,
+                    "Actual_Failures": 68
+                }
+            ]
+        },
+        "step06_policy_cost_comparison": {
+            "source_file": "step06_policy_cost_comparison.csv",
+            "summary": {
+                "available": true,
+                "rows": 5,
+                "columns": [
+                    "Policy",
+                    "Action",
+                    "Total_Simulated_Cost",
+                    "Mean_Simulated_Cost_Per_Row",
+                    "Rows"
+                ]
+            },
+            "preview": [
+                {
+                    "Policy": "Always Normal",
+                    "Action": "Normal",
+                    "Total_Simulated_Cost": 68000.0,
+                    "Mean_Simulated_Cost_Per_Row": 34.0,
+                    "Rows": 2000
+                },
+                {
+                    "Policy": "Always Monitor",
+                    "Action": "Monitor",
+                    "Total_Simulated_Cost": 79440.0,
+                    "Mean_Simulated_Cost_Per_Row": 39.72,
+                    "Rows": 2000
+                },
+                {
+                    "Policy": "Always Schedule",
+                    "Action": "Schedule Maintenance",
+                    "Total_Simulated_Cost": 171560.0,
+                    "Mean_Simulated_Cost_Per_Row": 85.78,
+                    "Rows": 2000
+                },
+                {
+                    "Policy": "Always Critical",
+                    "Action": "Critical",
+                    "Total_Simulated_Cost": 393200.0,
+                    "Mean_Simulated_Cost_Per_Row": 196.6,
+                    "Rows": 2000
+                },
+                {
+                    "Policy": "Probability-Based Agent",
+                    "Action": "Probability thresholds",
+                    "Total_Simulated_Cost": 32910.0,
+                    "Mean_Simulated_Cost_Per_Row": 16.455,
+                    "Rows": 2000
+                }
+            ]
+        },
+        "step06_action_summary": {
+            "source_file": "step06_action_summary.csv",
+            "summary": {
+                "available": true,
+                "rows": 4,
+                "columns": [
+                    "Action",
+                    "Number_of_Rows",
+                    "Actual_Failures",
+                    "Mean_Predicted_Probability",
+                    "Total_Simulated_Cost",
+                    "Mean_Simulated_Cost",
+                    "Percentage_of_Rows",
+                    "Observed_Failure_Rate"
+                ]
+            },
+            "preview": [
+                {
+                    "Action": "Normal",
+                    "Number_of_Rows": 1691,
+                    "Actual_Failures": 4,
+                    "Mean_Predicted_Probability": 0.0027786529957066,
+                    "Total_Simulated_Cost": 4000.0,
+                    "Mean_Simulated_Cost": 2.365464222353637,
+                    "Percentage_of_Rows": 84.55,
+                    "Observed_Failure_Rate": 0.0023654642223536
+                },
+                {
+                    "Action": "Monitor",
+                    "Number_of_Rows": 110,
+                    "Actual_Failures": 0,
+                    "Mean_Predicted_Probability": 0.043679937690909,
+                    "Total_Simulated_Cost": 2200.0,
+                    "Mean_Simulated_Cost": 20.0,
+                    "Percentage_of_Rows": 5.5,
+                    "Observed_Failure_Rate": 0.0
+                },
+                {
+                    "Action": "Schedule Maintenance",
+                    "Number_of_Rows": 67,
+                    "Actual_Failures": 5,
+                    "Mean_Predicted_Probability": 0.1270682765074626,
+                    "Total_Simulated_Cost": 6210.0,
+                    "Mean_Simulated_Cost": 92.68656716417912,
+                    "Percentage_of_Rows": 3.35,
+                    "Observed_Failure_Rate": 0.0746268656716417
+                },
+                {
+                    "Action": "Critical",
+                    "Number_of_Rows": 132,
+                    "Actual_Failures": 59,
+                    "Mean_Predicted_Probability": 0.6744217567424242,
+                    "Total_Simulated_Cost": 20500.0,
+                    "Mean_Simulated_Cost": 155.3030303030303,
+                    "Percentage_of_Rows": 6.6000000000000005,
+                    "Observed_Failure_Rate": 0.4469696969696969
+                }
+            ]
+        },
+        "step07_sensor_associations": {
+            "source_file": "step07_sensor_associations.csv",
+            "summary": {
+                "available": true,
+                "rows": 5,
+                "columns": [
+                    "Feature",
+                    "Spearman_Rho",
+                    "P_Value_If_SciPy_Available",
+                    "Absolute_Rho",
+                    "Interpretation"
+                ]
+            },
+            "preview": [
+                {
+                    "Feature": "Torque [Nm]",
+                    "Spearman_Rho": 0.1694134903955556,
+                    "P_Value_If_SciPy_Available": 2.812399870057469e-65,
+                    "Absolute_Rho": 0.1694134903955556,
+                    "Interpretation": "Descriptive association; not causal evidence"
+                },
+                {
+                    "Feature": "Rotational speed [rpm]",
+                    "Spearman_Rho": -0.1671875238490048,
+                    "P_Value_If_SciPy_Available": 1.34548875016773e-63,
+                    "Absolute_Rho": 0.1671875238490048,
+                    "Interpretation": "Descriptive association; not causal evidence"
+                },
+                {
+                    "Feature": "Tool wear [min]",
+                    "Spearman_Rho": 0.1016297031797368,
+                    "P_Value_If_SciPy_Available": 2.2413122466020443e-24,
+                    "Absolute_Rho": 0.1016297031797368,
+                    "Interpretation": "Descriptive association; not causal evidence"
+                },
+                {
+                    "Feature": "Air temperature [K]",
+                    "Spearman_Rho": 0.0832233014662873,
+                    "P_Value_If_SciPy_Available": 7.700666676816002e-17,
+                    "Absolute_Rho": 0.0832233014662873,
+                    "Interpretation": "Descriptive association; not causal evidence"
+                },
+                {
+                    "Feature": "Process temperature [K]",
+                    "Spearman_Rho": 0.0399460001573712,
+                    "P_Value_If_SciPy_Available": 6.450463217869103e-05,
+                    "Absolute_Rho": 0.0399460001573712,
+                    "Interpretation": "Descriptive association; not causal evidence"
+                }
+            ]
+        },
+        "step07_failure_risk_by_type": {
+            "source_file": "step07_failure_risk_by_type.csv",
+            "summary": {
+                "available": true,
+                "rows": 3,
+                "columns": [
+                    "Machine_Type",
+                    "Rows",
+                    "Failures",
+                    "Failure_Rate",
+                    "Failure_Rate_Percent",
+                    "Wilson_95CI_Lower",
+                    "Wilson_95CI_Upper",
+                    "Wilson_95CI_Lower_Percent",
+                    "Wilson_95CI_Upper_Percent"
+                ]
+            },
+            "preview": [
+                {
+                    "Machine_Type": "L",
+                    "Rows": 6000,
+                    "Failures": 235,
+                    "Failure_Rate": 0.0391666666666666,
+                    "Failure_Rate_Percent": 3.916666666666667,
+                    "Wilson_95CI_Lower": 0.0345456751181782,
+                    "Wilson_95CI_Upper": 0.0443773714130618,
+                    "Wilson_95CI_Lower_Percent": 3.454567511817827,
+                    "Wilson_95CI_Upper_Percent": 4.437737141306182
+                },
+                {
+                    "Machine_Type": "M",
+                    "Rows": 2997,
+                    "Failures": 83,
+                    "Failure_Rate": 0.0276943610276943,
+                    "Failure_Rate_Percent": 2.7694361027694363,
+                    "Wilson_95CI_Lower": 0.0223967667126014,
+                    "Wilson_95CI_Upper": 0.0342011779477073,
+                    "Wilson_95CI_Lower_Percent": 2.23967667126015,
+                    "Wilson_95CI_Upper_Percent": 3.420117794770735
+                },
+                {
+                    "Machine_Type": "H",
+                    "Rows": 1003,
+                    "Failures": 21,
+                    "Failure_Rate": 0.0209371884346959,
+                    "Failure_Rate_Percent": 2.0937188434695915,
+                    "Wilson_95CI_Lower": 0.013734416412083,
+                    "Wilson_95CI_Upper": 0.0317955510113759,
+                    "Wilson_95CI_Lower_Percent": 1.3734416412083073,
+                    "Wilson_95CI_Upper_Percent": 3.179555101137592
+                }
+            ]
+        },
+        "step07_sensor_condition_risk": {
+            "source_file": "step07_sensor_condition_risk.csv",
+            "summary": {
+                "available": true,
+                "rows": 50,
+                "columns": [
+                    "Feature",
+                    "Condition_Bin",
+                    "Bin_Lower",
+                    "Bin_Upper",
+                    "Rows",
+                    "Failures",
+                    "Failure_Rate",
+                    "Failure_Rate_Percent",
+                    "Wilson_95CI_Lower",
+                    "Wilson_95CI_Upper",
+                    "Wilson_95CI_Lower_Percent",
+                    "Wilson_95CI_Upper_Percent",
+                    "Meets_Minimum_Bin_Size"
+                ]
+            },
+            "preview": [
+                {
+                    "Feature": "Air temperature [K]",
+                    "Condition_Bin": "(295.29900000000004, 297.4]",
+                    "Bin_Lower": 295.29900000000004,
+                    "Bin_Upper": 297.4,
+                    "Rows": 1048,
+                    "Failures": 27,
+                    "Failure_Rate": 0.0257633587786259,
+                    "Failure_Rate_Percent": 2.5763358778625958,
+                    "Wilson_95CI_Lower": 0.0177656503997845,
+                    "Wilson_95CI_Upper": 0.037225012247745,
+                    "Wilson_95CI_Lower_Percent": 1.7765650399784518,
+                    "Wilson_95CI_Upper_Percent": 3.722501224774502,
+                    "Meets_Minimum_Bin_Size": true
+                },
+                {
+                    "Feature": "Air temperature [K]",
+                    "Condition_Bin": "(297.4, 298.1]",
+                    "Bin_Lower": 297.4,
+                    "Bin_Upper": 298.1,
+                    "Rows": 1087,
+                    "Failures": 19,
+                    "Failure_Rate": 0.0174793008279668,
+                    "Failure_Rate_Percent": 1.7479300827966882,
+                    "Wilson_95CI_Lower": 0.0112182627955401,
+                    "Wilson_95CI_Upper": 0.0271387857767875,
+                    "Wilson_95CI_Lower_Percent": 1.1218262795540102,
+                    "Wilson_95CI_Upper_Percent": 2.7138785776787557,
+                    "Meets_Minimum_Bin_Size": true
+                },
+                {
+                    "Feature": "Air temperature [K]",
+                    "Condition_Bin": "(298.1, 298.7]",
+                    "Bin_Lower": 298.1,
+                    "Bin_Upper": 298.7,
+                    "Rows": 974,
+                    "Failures": 23,
+                    "Failure_Rate": 0.0236139630390143,
+                    "Failure_Rate_Percent": 2.3613963039014374,
+                    "Wilson_95CI_Lower": 0.0157859903700748,
+                    "Wilson_95CI_Upper": 0.0351849092283164,
+                    "Wilson_95CI_Lower_Percent": 1.5785990370074887,
+                    "Wilson_95CI_Upper_Percent": 3.5184909228316457,
+                    "Meets_Minimum_Bin_Size": true
+                },
+                {
+                    "Feature": "Air temperature [K]",
+                    "Condition_Bin": "(298.7, 299.2]",
+                    "Bin_Lower": 298.7,
+                    "Bin_Upper": 299.2,
+                    "Rows": 930,
+                    "Failures": 25,
+                    "Failure_Rate": 0.0268817204301075,
+                    "Failure_Rate_Percent": 2.6881720430107525,
+                    "Wilson_95CI_Lower": 0.0182735102522782,
+                    "Wilson_95CI_Upper": 0.0393823780273961,
+                    "Wilson_95CI_Lower_Percent": 1.827351025227825,
+                    "Wilson_95CI_Upper_Percent": 3.938237802739617,
+                    "Meets_Minimum_Bin_Size": true
+                },
+                {
+                    "Feature": "Air temperature [K]",
+                    "Condition_Bin": "(299.2, 300.1]",
+                    "Bin_Lower": 299.2,
+                    "Bin_Upper": 300.1,
+                    "Rows": 1078,
+                    "Failures": 16,
+                    "Failure_Rate": 0.0148423005565862,
+                    "Failure_Rate_Percent": 1.4842300556586272,
+                    "Wilson_95CI_Lower": 0.0091563561121535,
+                    "Wilson_95CI_Upper": 0.0239736912977179,
+                    "Wilson_95CI_Lower_Percent": 0.915635611215355,
+                    "Wilson_95CI_Upper_Percent": 2.397369129771794,
+                    "Meets_Minimum_Bin_Size": true
+                }
+            ]
+        },
+        "step08_policy_cost_comparison": {
+            "source_file": "step08_policy_cost_comparison.csv",
+            "summary": {
+                "available": true,
+                "rows": 10,
+                "columns": [
+                    "Policy",
+                    "Rows",
+                    "Total_Simulated_Cost",
+                    "Mean_Simulated_Cost_Per_Row"
+                ]
+            },
+            "preview": [
+                {
+                    "Policy": "Higher_Thresholds",
+                    "Rows": 2000,
+                    "Total_Simulated_Cost": 30170.0,
+                    "Mean_Simulated_Cost_Per_Row": 15.085
+                },
+                {
+                    "Policy": "Initial_Step6",
+                    "Rows": 2000,
+                    "Total_Simulated_Cost": 32910.0,
+                    "Mean_Simulated_Cost_Per_Row": 16.455
+                },
+                {
+                    "Policy": "Feedback_Learning_Agent",
+                    "Rows": 2000,
+                    "Total_Simulated_Cost": 34430.0,
+                    "Mean_Simulated_Cost_Per_Row": 17.215
+                },
+                {
+                    "Policy": "Maintenance_Focused",
+                    "Rows": 2000,
+                    "Total_Simulated_Cost": 37940.0,
+                    "Mean_Simulated_Cost_Per_Row": 18.97
+                },
+                {
+                    "Policy": "Conservative",
+                    "Rows": 2000,
+                    "Total_Simulated_Cost": 42080.0,
+                    "Mean_Simulated_Cost_Per_Row": 21.04
+                }
+            ]
+        },
+        "step08_policy_selection_counts": {
+            "source_file": null,
+            "summary": {
+                "available": false
+            }
+        },
+        "step09_fixed_policy_baselines": {
+            "source_file": "step09_fixed_policy_baselines.csv",
+            "summary": {
+                "available": true,
+                "rows": 9,
+                "columns": [
+                    "policy",
+                    "monitor_threshold",
+                    "maintenance_threshold",
+                    "critical_threshold",
+                    "rows",
+                    "actual_failures",
+                    "failure_rate",
+                    "total_cost",
+                    "mean_cost_per_row",
+                    "cost_std_per_row",
+                    "missed_failures",
+                    "maintenance_actions",
+                    "critical_actions",
+                    "monitor_actions",
+                    "normal_actions",
+                    "failure_action_rate",
+                    "nonfailure_maintenance_rate"
+                ]
+            },
+            "preview": [
+                {
+                    "policy": "Initial_Step6",
+                    "monitor_threshold": 0.02,
+                    "maintenance_threshold": 0.08,
+                    "critical_threshold": 0.2,
+                    "rows": 2000,
+                    "actual_failures": 68,
+                    "failure_rate": 0.034,
+                    "total_cost": 32910.0,
+                    "mean_cost_per_row": 16.455,
+                    "cost_std_per_row": 62.13600385444818,
+                    "missed_failures": 4,
+                    "maintenance_actions": 67,
+                    "critical_actions": 132,
+                    "monitor_actions": 110,
+                    "normal_actions": 1691,
+                    "failure_action_rate": 0.9411764705882352,
+                    "nonfailure_maintenance_rate": 0.0698757763975155
+                },
+                {
+                    "policy": "Higher_Thresholds",
+                    "monitor_threshold": 0.05,
+                    "maintenance_threshold": 0.15,
+                    "critical_threshold": 0.3,
+                    "rows": 2000,
+                    "actual_failures": 68,
+                    "failure_rate": 0.034,
+                    "total_cost": 28590.0,
+                    "mean_cost_per_row": 14.295,
+                    "cost_std_per_row": 64.78350851104007,
+                    "missed_failures": 4,
+                    "maintenance_actions": 34,
+                    "critical_actions": 112,
+                    "monitor_actions": 90,
+                    "normal_actions": 1764,
+                    "failure_action_rate": 0.9411764705882352,
+                    "nonfailure_maintenance_rate": 0.0445134575569358
+                },
+                {
+                    "policy": "Lower_Thresholds",
+                    "monitor_threshold": 0.01,
+                    "maintenance_threshold": 0.05,
+                    "critical_threshold": 0.15,
+                    "rows": 2000,
+                    "actual_failures": 68,
+                    "failure_rate": 0.034,
+                    "total_cost": 38540.0,
+                    "mean_cost_per_row": 19.27,
+                    "cost_std_per_row": 63.90201170542286,
+                    "missed_failures": 4,
+                    "maintenance_actions": 90,
+                    "critical_actions": 146,
+                    "monitor_actions": 173,
+                    "normal_actions": 1591,
+                    "failure_action_rate": 0.9411764705882352,
+                    "nonfailure_maintenance_rate": 0.0890269151138716
+                },
+                {
+                    "policy": "Maintenance_Focused",
+                    "monitor_threshold": 0.01,
+                    "maintenance_threshold": 0.04,
+                    "critical_threshold": 0.12,
+                    "rows": 2000,
+                    "actual_failures": 68,
+                    "failure_rate": 0.034,
+                    "total_cost": 42080.0,
+                    "mean_cost_per_row": 21.04,
+                    "cost_std_per_row": 66.37106598511133,
+                    "missed_failures": 4,
+                    "maintenance_actions": 89,
+                    "critical_actions": 166,
+                    "monitor_actions": 154,
+                    "normal_actions": 1591,
+                    "failure_action_rate": 0.9411764705882352,
+                    "nonfailure_maintenance_rate": 0.0988612836438923
+                },
+                {
+                    "policy": "Conservative",
+                    "monitor_threshold": 0.08,
+                    "maintenance_threshold": 0.2,
+                    "critical_threshold": 0.4,
+                    "rows": 2000,
+                    "actual_failures": 68,
+                    "failure_rate": 0.034,
+                    "total_cost": 25500.0,
+                    "mean_cost_per_row": 12.75,
+                    "cost_std_per_row": 63.814085435740594,
+                    "missed_failures": 4,
+                    "maintenance_actions": 36,
+                    "critical_actions": 96,
+                    "monitor_actions": 67,
+                    "normal_actions": 1801,
+                    "failure_action_rate": 0.9411764705882352,
+                    "nonfailure_maintenance_rate": 0.0377846790890269
+                }
+            ]
+        },
+        "step09_robustness_summary": {
+            "source_file": "step09_robustness_summary.csv",
+            "summary": {
+                "available": true,
+                "rows": 5,
+                "columns": [
+                    "policy",
+                    "mean_total_cost",
+                    "std_total_cost",
+                    "min_total_cost",
+                    "max_total_cost",
+                    "mean_cost_per_row",
+                    "std_cost_per_row",
+                    "mean_missed_failures",
+                    "mean_maintenance_actions",
+                    "mean_critical_actions"
+                ]
+            },
+            "preview": [
+                {
+                    "policy": "Conservative",
+                    "mean_total_cost": 25500.0,
+                    "std_total_cost": 0.0,
+                    "min_total_cost": 25500.0,
+                    "max_total_cost": 25500.0,
+                    "mean_cost_per_row": 12.75,
+                    "std_cost_per_row": 0.0,
+                    "mean_missed_failures": 4.0,
+                    "mean_maintenance_actions": 36.0,
+                    "mean_critical_actions": 96.0
+                },
+                {
+                    "policy": "Higher_Thresholds",
+                    "mean_total_cost": 28590.0,
+                    "std_total_cost": 0.0,
+                    "min_total_cost": 28590.0,
+                    "max_total_cost": 28590.0,
+                    "mean_cost_per_row": 14.294999999999998,
+                    "std_cost_per_row": 0.0,
+                    "mean_missed_failures": 4.0,
+                    "mean_maintenance_actions": 34.0,
+                    "mean_critical_actions": 112.0
+                },
+                {
+                    "policy": "Initial_Step6",
+                    "mean_total_cost": 32910.0,
+                    "std_total_cost": 0.0,
+                    "min_total_cost": 32910.0,
+                    "max_total_cost": 32910.0,
+                    "mean_cost_per_row": 16.455,
+                    "std_cost_per_row": 0.0,
+                    "mean_missed_failures": 4.0,
+                    "mean_maintenance_actions": 67.0,
+                    "mean_critical_actions": 132.0
+                },
+                {
+                    "policy": "Lower_Thresholds",
+                    "mean_total_cost": 38540.0,
+                    "std_total_cost": 0.0,
+                    "min_total_cost": 38540.0,
+                    "max_total_cost": 38540.0,
+                    "mean_cost_per_row": 19.27,
+                    "std_cost_per_row": 0.0,
+                    "mean_missed_failures": 4.0,
+                    "mean_maintenance_actions": 90.0,
+                    "mean_critical_actions": 146.0
+                },
+                {
+                    "policy": "Maintenance_Focused",
+                    "mean_total_cost": 42080.0,
+                    "std_total_cost": 0.0,
+                    "min_total_cost": 42080.0,
+                    "max_total_cost": 42080.0,
+                    "mean_cost_per_row": 21.04,
+                    "std_cost_per_row": 0.0,
+                    "mean_missed_failures": 4.0,
+                    "mean_maintenance_actions": 89.0,
+                    "mean_critical_actions": 166.0
+                }
+            ]
+        },
+        "step09_online_episode_summary": {
+            "source_file": "step09_online_episode_summary.csv",
+            "summary": {
+                "available": true,
+                "rows": 30,
+                "columns": [
+                    "seed",
+                    "batch_size",
+                    "rows",
+                    "total_cost",
+                    "mean_cost_per_row",
+                    "number_of_batches",
+                    "exploration_batches",
+                    "exploitation_batches",
+                    "selected_batches_Initial_Step6",
+                    "selected_batches_Higher_Thresholds",
+                    "selected_batches_Lower_Thresholds",
+                    "selected_batches_Maintenance_Focused",
+                    "selected_batches_Conservative"
+                ]
+            },
+            "preview": [
+                {
+                    "seed": 11,
+                    "batch_size": 50,
+                    "rows": 2000,
+                    "total_cost": 26740.0,
+                    "mean_cost_per_row": 13.37,
+                    "number_of_batches": 40,
+                    "exploration_batches": 6,
+                    "exploitation_batches": 34,
+                    "selected_batches_Initial_Step6": 2,
+                    "selected_batches_Higher_Thresholds": 2,
+                    "selected_batches_Lower_Thresholds": 1,
+                    "selected_batches_Maintenance_Focused": 0,
+                    "selected_batches_Conservative": 35
+                },
+                {
+                    "seed": 23,
+                    "batch_size": 50,
+                    "rows": 2000,
+                    "total_cost": 31110.0,
+                    "mean_cost_per_row": 15.555,
+                    "number_of_batches": 40,
+                    "exploration_batches": 7,
+                    "exploitation_batches": 33,
+                    "selected_batches_Initial_Step6": 0,
+                    "selected_batches_Higher_Thresholds": 0,
+                    "selected_batches_Lower_Thresholds": 0,
+                    "selected_batches_Maintenance_Focused": 14,
+                    "selected_batches_Conservative": 26
+                },
+                {
+                    "seed": 42,
+                    "batch_size": 50,
+                    "rows": 2000,
+                    "total_cost": 28360.0,
+                    "mean_cost_per_row": 14.18,
+                    "number_of_batches": 40,
+                    "exploration_batches": 10,
+                    "exploitation_batches": 30,
+                    "selected_batches_Initial_Step6": 10,
+                    "selected_batches_Higher_Thresholds": 11,
+                    "selected_batches_Lower_Thresholds": 1,
+                    "selected_batches_Maintenance_Focused": 0,
+                    "selected_batches_Conservative": 18
+                },
+                {
+                    "seed": 57,
+                    "batch_size": 50,
+                    "rows": 2000,
+                    "total_cost": 28470.0,
+                    "mean_cost_per_row": 14.235,
+                    "number_of_batches": 40,
+                    "exploration_batches": 5,
+                    "exploitation_batches": 35,
+                    "selected_batches_Initial_Step6": 1,
+                    "selected_batches_Higher_Thresholds": 35,
+                    "selected_batches_Lower_Thresholds": 1,
+                    "selected_batches_Maintenance_Focused": 0,
+                    "selected_batches_Conservative": 3
+                },
+                {
+                    "seed": 81,
+                    "batch_size": 50,
+                    "rows": 2000,
+                    "total_cost": 29910.0,
+                    "mean_cost_per_row": 14.955,
+                    "number_of_batches": 40,
+                    "exploration_batches": 7,
+                    "exploitation_batches": 33,
+                    "selected_batches_Initial_Step6": 1,
+                    "selected_batches_Higher_Thresholds": 26,
+                    "selected_batches_Lower_Thresholds": 2,
+                    "selected_batches_Maintenance_Focused": 2,
+                    "selected_batches_Conservative": 9
+                }
+            ]
+        }
+    },
+    "previous_step_reports_available": {
+        "step01_report": false,
+        "step02_report": true,
+        "step03_report": true,
+        "step04_report": true,
+        "step05_report": true,
+        "step06_report": true,
+        "step07_report": true,
+        "step08_report": true,
+        "step09_report": true
+    },
+    "graphs_generated": [
+        {
+            "source_key": "step02_model_metrics",
+            "source_file": "step02_model_metrics.csv",
+            "graph_file": "step10_model_performance.png",
+            "metric_column": "ROC_AUC"
+        },
+        {
+            "source_key": "step03_calibration_metrics",
+            "source_file": "step03_calibration_metrics.csv",
+            "graph_file": "step10_calibration_comparison.png",
+            "metric_column": "Brier_Score"
+        },
+        {
+            "source_key": "step04_shap_feature_importance",
+            "source_file": "step04_shap_feature_importance.csv",
+            "graph_file": "step10_shap_importance.png",
+            "metric_column": "Mean_Absolute_SHAP"
+        },
+        {
+            "source_key": "step05_two_feature_comparison",
+            "source_file": "step05_two_feature_comparison.csv",
+            "graph_file": "step10_feature_experiment.png",
+            "metric_column": "ROC_AUC"
+        },
+        {
+            "source_key": "step06_policy_cost_comparison",
+            "source_file": "step06_policy_cost_comparison.csv",
+            "graph_file": "step10_step06_policy_cost.png",
+            "metric_column": "Total_Simulated_Cost"
+        },
+        {
+            "source_key": "step07_sensor_associations",
+            "source_file": "step07_sensor_associations.csv",
+            "graph_file": "step10_sensor_associations.png",
+            "metric_column": "Spearman_Rho"
+        },
+        {
+            "source_key": "step09_fixed_policy_baselines",
+            "source_file": "step09_fixed_policy_baselines.csv",
+            "graph_file": "step10_fixed_policy_cost.png",
+            "metric_column": "mean_cost_per_row"
+        },
+        {
+            "source_key": "step09_robustness_summary",
+            "source_file": "step09_robustness_summary.csv",
+            "graph_file": "step10_robustness.png",
+            "metric_column": "mean_cost_per_row"
+        }
+    ],
+    "interpretation_and_limitations": [
+        "The report integrates existing experiment outputs; it does not retrain the models.",
+        "The AI4I 2020 dataset does not provide true chronological histories for individual machines.",
+        "Statistical associations between operating conditions and failure are not proof of causation.",
+        "Cost results use simulated assumptions, not measured industrial operating expenses.",
+        "The online selector chooses among predefined policies. This does not establish unrestricted autonomous learning.",
+        "Lower observed cost alone does not establish statistical significance or real-world savings.",
+        "Graph metrics are selected from existing table columns. Interpret each graph using its source table and metric."
+    ]
+}

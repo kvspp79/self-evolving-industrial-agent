@@ -1,0 +1,66 @@
+{
+  "step": 7,
+  "title": "Statistical Condition-Risk Trend Learning",
+  "dataset": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent\\data\\ai4i2020.csv",
+  "rows_loaded": 10000,
+  "rows_analyzed": 10000,
+  "rows_dropped": 0,
+  "failures": 339,
+  "non_failures": 9661,
+  "baseline_failure_rate": 0.0339,
+  "features_analyzed": [
+    "Air temperature [K]",
+    "Process temperature [K]",
+    "Rotational speed [rpm]",
+    "Torque [Nm]",
+    "Tool wear [min]"
+  ],
+  "strongest_descriptive_associations": [
+    {
+      "Feature": "Torque [Nm]",
+      "Spearman_Rho": 0.16941349039555567,
+      "P_Value_If_SciPy_Available": 2.812399870057469e-65,
+      "Absolute_Rho": 0.16941349039555567,
+      "Interpretation": "Descriptive association; not causal evidence"
+    },
+    {
+      "Feature": "Rotational speed [rpm]",
+      "Spearman_Rho": -0.16718752384900482,
+      "P_Value_If_SciPy_Available": 1.3454887501677299e-63,
+      "Absolute_Rho": 0.16718752384900482,
+      "Interpretation": "Descriptive association; not causal evidence"
+    },
+    {
+      "Feature": "Tool wear [min]",
+      "Spearman_Rho": 0.10162970317973681,
+      "P_Value_If_SciPy_Available": 2.241312246602044e-24,
+      "Absolute_Rho": 0.10162970317973681,
+      "Interpretation": "Descriptive association; not causal evidence"
+    }
+  ],
+  "methodology": {
+    "sensor_binning": "Up to 10 quantile bins per sensor",
+    "confidence_intervals": "95% Wilson intervals for binomial proportions",
+    "quartile_comparison": "Q1 versus Q3 with bootstrap risk-difference interval",
+    "bootstrap_repetitions": 1000,
+    "random_state": 42,
+    "minimum_bin_rows_flag": 30
+  },
+  "outputs": {
+    "sensor_condition_risk_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent\\outputs\\step07_sensor_condition_risk.csv",
+    "sensor_associations_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent\\outputs\\step07_sensor_associations.csv",
+    "failure_risk_by_type_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent\\outputs\\step07_failure_risk_by_type.csv",
+    "torque_toolwear_grid_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent\\outputs\\step07_torque_toolwear_risk_grid.csv",
+    "low_high_contrasts_csv": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent\\outputs\\step07_low_high_risk_contrasts.csv",
+    "sensor_risk_plot": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent\\outputs\\step07_sensor_condition_risk.png",
+    "torque_toolwear_heatmap": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent\\outputs\\step07_torque_toolwear_heatmap.png"
+  },
+  "limitations": [
+    "Associations do not establish causation.",
+    "AI4I does not provide chronological per-machine histories.",
+    "UDI row order must not be treated as degradation time.",
+    "Actual maintenance costs and post-maintenance outcomes are unavailable.",
+    "Rare failures can make small-bin rates unstable.",
+    "Exploratory p-values are not adjusted for multiple comparisons."
+  ]
+}

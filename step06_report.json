@@ -1,0 +1,50 @@
+{
+  "step": 6,
+  "title": "Rational Maintenance Agent",
+  "input_file": "C:\\Users\\kvspp\\Downloads\\Self_Evolving_Industrial_Agent\\outputs\\step05_two_feature_test_predictions.csv",
+  "evaluation_rows": 2000,
+  "actual_failures": 68,
+  "actual_failure_rate": 0.034,
+  "policy_type": "Fixed transparent probability thresholds",
+  "thresholds": {
+    "Normal": "p < 0.02",
+    "Monitor": "0.02 <= p < 0.08",
+    "Schedule Maintenance": "0.08 <= p < 0.2",
+    "Critical": "p >= 0.2"
+  },
+  "simulated_cost_model": {
+    "Normal": {
+      "failure_cost": 1000.0,
+      "no_failure_cost": 0.0
+    },
+    "Monitor": {
+      "failure_cost": 600.0,
+      "no_failure_cost": 20.0
+    },
+    "Schedule Maintenance": {
+      "failure_cost": 250.0,
+      "no_failure_cost": 80.0
+    },
+    "Critical": {
+      "failure_cost": 100.0,
+      "no_failure_cost": 200.0
+    }
+  },
+  "total_simulated_cost": 32910.0,
+  "mean_simulated_cost_per_row": 16.455,
+  "missed_failures_under_policy": 4,
+  "action_counts": {
+    "Normal": 1691,
+    "Monitor": 110,
+    "Schedule Maintenance": 67,
+    "Critical": 132
+  },
+  "limitations": [
+    "The maintenance costs are illustrative assumptions, not measured costs.",
+    "AI4I does not contain actual maintenance actions or intervention outcomes.",
+    "The agent uses fixed thresholds and does not learn from feedback in this step.",
+    "This is a held-out test-set evaluation, not a prospective industrial trial.",
+    "The reference-policy costs use the same assumed cost model.",
+    "Thresholds have not been optimized using an independent validation set."
+  ]
+}

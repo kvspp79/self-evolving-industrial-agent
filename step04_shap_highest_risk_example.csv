@@ -1,0 +1,9 @@
+Rank,Safe_Feature,Feature,Transformed_Value,SHAP_Value,Absolute_SHAP
+1,feature_03,numeric__Torque [Nm],2.5248868,4.8650947,4.8650947
+2,feature_02,numeric__Rotational speed [rpm],-1.2563123,1.1676849,1.1676849
+3,feature_00,numeric__Air temperature [K],0.39792776,-0.65861505,0.65861505
+4,feature_04,numeric__Tool wear [min],1.3255403,0.56778574,0.56778574
+5,feature_01,numeric__Process temperature [K],-0.071695864,0.2819805,0.2819805
+6,feature_06,categorical__Type_L,1.0,0.114871114,0.114871114
+7,feature_07,categorical__Type_M,0.0,0.07072112,0.07072112
+8,feature_05,categorical__Type_H,0.0,0.0054070903,0.0054070903

@@ -1,0 +1,45 @@
+{
+    "step": 2,
+    "dataset": "AI4I 2020 Predictive Maintenance",
+    "training_rows": 8000,
+    "testing_rows": 2000,
+    "training_failure_count": 271,
+    "training_nonfailure_count": 7729,
+    "testing_failure_count": 68,
+    "testing_nonfailure_count": 1932,
+    "decision_threshold": 0.5,
+    "scale_pos_weight": 28.52029520295203,
+    "models": [
+        {
+            "Threshold": 0.5,
+            "Accuracy": 0.8245,
+            "Precision": 0.14177215189873418,
+            "Recall": 0.8235294117647058,
+            "F1": 0.24190064794816415,
+            "ROC_AUC": 0.9069540859822189,
+            "PR_AUC_Average_Precision": 0.38176196610560775,
+            "Brier_Score": 0.12207506222963517,
+            "TN": 1593,
+            "FP": 339,
+            "FN": 12,
+            "TP": 56,
+            "Model": "Logistic_Regression"
+        },
+        {
+            "Threshold": 0.5,
+            "Accuracy": 0.969,
+            "Precision": 0.5277777777777778,
+            "Recall": 0.8382352941176471,
+            "F1": 0.6477272727272727,
+            "ROC_AUC": 0.9709003166483985,
+            "PR_AUC_Average_Precision": 0.8147087441784051,
+            "Brier_Score": 0.024071430787444115,
+            "TN": 1881,
+            "FP": 51,
+            "FN": 11,
+            "TP": 57,
+            "Model": "XGBoost"
+        }
+    ],
+    "interpretation_note": "Threshold-based metrics use 0.50. Threshold selection and probability calibration will be investigated in later steps. The held-out test set should not be used to tune the model or select a threshold."
+}
